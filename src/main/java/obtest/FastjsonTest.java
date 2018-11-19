@@ -1,3 +1,5 @@
+package obtest;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -16,7 +18,7 @@ import java.util.Map;
 
 /**
  * Copyright (C): 长安新生(深圳)金融投资有限公司
- * FileName: FastjsonTest
+ * FileName: obtest.FastjsonTest
  * Author:   xiexing
  * Date:     2018/11/7 19:51
  * Description: Fastjson测试
@@ -46,7 +48,10 @@ public class FastjsonTest {
         JSONObject jsonObject = JSON.parseObject(JSON_OBJ_STR);
         //JSONObject jsonObject1 = JSONObject.parseObject(JSON_OBJ_STR); //因为JSONObject继承了JSON，所以这样也是可以的
 
-        System.out.println(jsonObject.getString("studentName")+":"+jsonObject.getString("studentAge"));
+        System.out.println(jsonObject.get("studentName")+":"+jsonObject.get("studentAge"));
+        System.out.println("sfsdfsdfsdfsdfsdfs");
+        System.out.println(jsonObject.toString());
+        System.out.println(jsonObject.toJSONString());
 
     }
 

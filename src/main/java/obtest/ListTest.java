@@ -1,3 +1,5 @@
+package obtest;
+
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,7 +10,7 @@ import java.util.List;
 
 /**
  * Copyright (C): 长安新生(深圳)金融投资有限公司
- * FileName: ListTest
+ * FileName: obtest.ListTest
  * Author:   xiexing
  * Date:     2018/11/8 9:39
  * Description: List测试
@@ -29,6 +31,13 @@ public class ListTest {
             log.info("{}",iterator.next());
 
         }
+
+        list.equals("aaa");
+        System.out.println(list.hashCode());
     }
+
+
+
+
 
 }
