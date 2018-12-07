@@ -1,10 +1,9 @@
 package obtest;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 import static java.util.Objects.hash;
 
@@ -89,6 +88,44 @@ public class StringTest {
         System.out.println(str1hash);
         int str2hash = hash(str2);
         System.out.println(str2hash);
+
+    }
+
+    @Test
+    public void stringMapTest() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("key1", "小明");
+        map.put("key2", "小冰");
+        map.put("key3", "小华");
+
+        try{
+            String code1 = map.get("key").toString();
+            String code = String.valueOf(map.get("key"));
+            System.out.println(code);
+            if (code == "null") {
+                System.out.println("ok1");
+            }
+            if ("null".equals(code)) {
+                System.out.println("ok2");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println("111111111111111111111111");
+            System.out.println(e.getMessage());
+            System.out.println(e);
+        }
+    }
+
+
+    @Test
+    public void subStringTest() {
+
+        String massage1 = "111a我司评估价格为XXX，请修改";
+        String massage2 = "222b我司评估价格为XXX，请修改";
+        System.out.println(massage1.substring(0,5));
+        System.out.println("车价过高,贷款申请已被拒绝," + StringUtils.substringBefore(massage1,"，"));
+        System.out.println(massage1.compareTo(massage2));
+        System.out.println(massage1.compareToIgnoreCase(massage2));
 
     }
 
