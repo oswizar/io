@@ -1,12 +1,12 @@
-package obtest;
+package com.xiexing.obtest;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
-import entity.Course;
-import entity.Student;
-import entity.Teacher;
+import com.xiexing.entity.Course;
+import com.xiexing.entity.Student;
+import com.xiexing.entity.Teacher;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,8 +18,8 @@ import java.util.Map;
 
 /**
  * Copyright (C): 长安新生(深圳)金融投资有限公司
- * FileName: obtest.FastjsonTest
- * Author:   xiexing
+ * FileName: com.xiexing.obtest.FastjsonTest
+ * Author:   com.xiexing
  * Date:     2018/11/7 19:51
  * Description: Fastjson测试
  */

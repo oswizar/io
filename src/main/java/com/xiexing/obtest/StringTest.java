@@ -1,4 +1,4 @@
-package obtest;
+package com.xiexing.obtest;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
@@ -9,8 +9,8 @@ import static java.util.Objects.hash;
 
 /**
  * Copyright (C): 长安新生(深圳)金融投资有限公司
- * FileName: obtest.StringTest
- * Author:   xiexing
+ * FileName: com.xiexing.obtest.StringTest
+ * Author:   com.xiexing
  * Date:     2018/11/15 15:48
  * Description: 字符串测试
  */

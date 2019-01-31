@@ -1,4 +1,4 @@
-package obtest;
+package com.xiexing.obtest;
 
 import org.junit.Test;
 

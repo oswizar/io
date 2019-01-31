@@ -1,4 +1,4 @@
-package obtest;
+package com.xiexing.obtest;
 
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -8,8 +8,8 @@ import java.util.*;
 
 /**
  * Copyright (C): 长安新生(深圳)金融投资有限公司
- * FileName: obtest.ListTest
- * Author:   xiexing
+ * FileName: com.xiexing.obtest.ListTest
+ * Author:   com.xiexing
  * Date:     2018/11/8 9:39
  * Description: List测试
  */

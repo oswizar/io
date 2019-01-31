@@ -1,11 +1,11 @@
 /**
  * Copyright (C): 长安新生(深圳)金融投资有限公司
  * FileName: FunctionTest
- * Author:   xiexing
+ * Author:   com.xiexing
  * Date:     2018/12/6 13:46
  * Description: 函数测试
  */
-package obtest;
+package com.xiexing.obtest;
 
 import org.junit.Test;
 

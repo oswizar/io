@@ -1,11 +1,11 @@
 /**
  * Copyright (C): 长安新生(深圳)金融投资有限公司
  * FileName: Course
- * Author:   xiexing
+ * Author:   com.xiexing
  * Date:     2018/11/7 20:53
  * Description:
  */
-package entity;
+package com.xiexing.entity;
 
 public class Course {
 
