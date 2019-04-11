@@ -49,7 +49,6 @@ public class FastjsonTest {
         //JSONObject jsonObject1 = JSONObject.parseObject(JSON_OBJ_STR); //因为JSONObject继承了JSON，所以这样也是可以的
 
         System.out.println(jsonObject.get("studentName")+":"+jsonObject.get("studentAge"));
-        System.out.println("sfsdfsdfsdfsdfsdfs");
         System.out.println(jsonObject.toString());
         System.out.println(jsonObject.toJSONString());
 
@@ -57,22 +56,25 @@ public class FastjsonTest {
 
 
     /**
-     * json字符串-数组类型与JSONArray之间的转换
+     * json字符串与JSONArray之间的转换
      */
     @Test
     public  void testJSONStrToJSONArray(){
 
         JSONArray jsonArray = JSON.parseArray(JSON_ARRAY_STR);
+        System.out.println("解析字符串得到的对象: " + jsonArray);
         //JSONArray jsonArray1 = JSONArray.parseArray(JSON_ARRAY_STR);//因为JSONArray继承了JSON，所以这样也是可以的
 
         //遍历方式1
         int size = jsonArray.size();
+        System.out.println("遍历方式1:");
         for (int i = 0; i < size; i++){
             JSONObject jsonObject = jsonArray.getJSONObject(i);
             System.out.println(jsonObject.getString("studentName")+":"+jsonObject.getInteger("studentAge"));
         }
 
         //遍历方式2
+        System.out.println("遍历方式2:");
         for (Object obj : jsonArray) {
             JSONObject jsonObject = (JSONObject) obj;
             System.out.println(jsonObject.getString("studentName")+":"+jsonObject.getInteger("studentAge"));
@@ -88,18 +90,18 @@ public class FastjsonTest {
         JSONObject jsonObject = JSON.parseObject(COMPLEX_JSON_STR);
         //JSONObject jsonObject1 = JSONObject.parseObject(COMPLEX_JSON_STR);//因为JSONObject继承了JSON，所以这样也是可以的
 
+        System.out.println("通过字符串转换的json对象为: " + jsonObject);
+
         String teacherName = jsonObject.getString("teacherName");
         Integer teacherAge = jsonObject.getInteger("teacherAge");
         JSONObject course = jsonObject.getJSONObject("course");
         JSONArray students = jsonObject.getJSONArray("students");
 
-        Map<String,Object> map = new HashMap<>();
-        map.put("map",jsonObject);
-
-        log.info(map.toString());
-
-        log.info(COMPLEX_JSON_STR);
-        log.info(jsonObject.toString());
+        System.out.println(teacherName);
+        System.out.println(teacherAge);
+        System.out.println(course);
+        System.out.println(students);
+        System.out.println(students.getJSONObject(1));
 
     }
 

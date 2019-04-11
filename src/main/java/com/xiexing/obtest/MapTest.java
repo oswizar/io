@@ -40,7 +40,7 @@ public class MapTest {
         Iterator<Map.Entry<String, Object>> iterator = map.entrySet().iterator();
         while (iterator.hasNext()) {
             Map.Entry<String, Object> entry = iterator.next();
-            log.info(entry.getKey() + entry.getValue());
+            log.info(entry.getKey() + ":" + entry.getValue());
         }
     }
 

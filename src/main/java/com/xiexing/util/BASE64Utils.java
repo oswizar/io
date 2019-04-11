@@ -16,11 +16,13 @@ public class BASE64Utils {
         String param = "测试BASE64加密的明文";
         System.out.println("加密前的明文:" + param);
         System.out.println("===============================================================");
+
         String data1 = Base64Utils.encodeToString(param.getBytes());
         System.out.println("使用spring[Base64Utils]加密后:" + data1);
         // 通过字符串为参数进行解密
         byte[] result1 = Base64Utils.decodeFromString(data1);
         System.out.println("使用spring[Base64Utils]解密后:" + new String(result1));
+
         System.out.println("===============================================================");
         String data2 = Base64.encodeBase64String(param.getBytes());
         System.out.println("使用commons[Base64]加密后:" + data2);

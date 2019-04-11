@@ -11,6 +11,11 @@ import org.junit.Test;
 
 public class FunctionTest {
 
+    /**
+     * 普通方法求阶乘
+     * @param n
+     * @return
+     */
     public int getFactorialFor(int n){
         int temp = 1;
         if(n >=0){
@@ -24,7 +29,11 @@ public class FunctionTest {
     }
 
 
-
+    /**
+     * 递归求阶乘
+     * @param n
+     * @return
+     */
     public int getFactorial(int n){
         if(n >= 0){
             if(n==0){
@@ -40,17 +49,9 @@ public class FunctionTest {
         return -1;
     }
 
-
-
-
     @Test
     public void print () {
+        System.out.println(getFactorialFor(3));
         getFactorial(3);
     }
-
-
-
-
-
-
 }
