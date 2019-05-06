@@ -1,23 +1,15 @@
 package com.xiexing.obtest;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-/**
- * Copyright (C): 长安新生(深圳)金融投资有限公司
- * FileName: com.xiexing.obtest.MapTest
- * Author:   com.xiexing
- * Date:     2018/11/5 17:58
- * Description: Map测试
- */
-
+@Slf4j
 public class MapTest {
-    private Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Test
     public void mapTest() {

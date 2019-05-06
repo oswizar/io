@@ -5,12 +5,18 @@ package com.xiexing.designpattern.proxy.staticproxy;
  * @author: oswizar
  * @description: Test Proxy
  */
-public class TestProxy {
+
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * 静态代理测试类
+ */
+@Slf4j
+public class ProxyTest {
 
     public static void main(String[] args) {
-//        UserDao userDao = new UserDao();
-//        UserDaoProxy userDaoProxy = new UserDaoProxy(userDao);
-        UserDaoProxy userDaoProxy = new UserDaoProxy();
+        UserDao target = new UserDao();
+        IUserDao userDaoProxy = new UserDaoProxy(target);
         userDaoProxy.save();
     }
 }

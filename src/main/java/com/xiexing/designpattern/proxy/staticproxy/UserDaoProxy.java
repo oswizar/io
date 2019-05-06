@@ -5,18 +5,27 @@ package com.xiexing.designpattern.proxy.staticproxy;
  * @author: oswizar
  * @description:
  */
+
+/**
+ * 代理对象
+ */
 public class UserDaoProxy implements IUserDao {
 
-    private UserDao userDao = new UserDao();
+    private UserDao target;
 
-//    public UserDaoProxy(UserDao target) {
-//        this.userDao = target;
-//
-//    }
+    public UserDaoProxy(UserDao target) {
+        this.target = target;
+
+    }
     @Override
     public void save() {
         System.out.println("Begin");
-        userDao.save();
+        target.save();
         System.out.println("End");
+    }
+
+    @Override
+    public void show() {
+
     }
 }

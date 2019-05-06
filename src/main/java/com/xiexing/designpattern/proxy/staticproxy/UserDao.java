@@ -5,9 +5,18 @@ package com.xiexing.designpattern.proxy.staticproxy;
  * @author: oswizar
  * @description:
  */
+
+/**
+ * 目标对象
+ */
 public class UserDao implements IUserDao {
     @Override
     public void save() {
         System.out.println("UserDao...");
+    }
+
+    @Override
+    public void show() {
+        System.out.println("New show()");
     }
 }
