@@ -5,7 +5,7 @@
  * Date:     2019/1/3 9:34
  * Description:
  */
-package com.xiexing.demo;
+package com.xiexing.iodemo;
 
 
 import org.junit.Test;

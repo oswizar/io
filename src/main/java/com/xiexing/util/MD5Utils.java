@@ -1,16 +1,6 @@
-/**
- * Copyright (C): 长安新生(深圳)金融投资有限公司
- * FileName: MD5
- * Author:   com.xiexing
- * Date:     2019/1/7 15:00
- * Description: MD5(信息摘要算法第五版)
- */
 package com.xiexing.util;
 
 import org.springframework.util.DigestUtils;
-
-
-//import org.apache.commons.codec.digest.DigestUtils;
 
 public class MD5Utils {
 
@@ -21,13 +11,10 @@ public class MD5Utils {
      * @return md5 密文
      */
     public static String md5(String text) {
-//        String encodeStr = DigestUtils.md5Hex(text);
         String encodeStr = DigestUtils.md5DigestAsHex(text.getBytes());
-        System.out.println("MD5加密后的字符串为：encodeStr="+encodeStr);
+        System.out.println("MD5加密后的字符串为:"+encodeStr);
         return encodeStr;
-
     }
-
 
     /**
      * MD5验证方法
@@ -38,10 +25,10 @@ public class MD5Utils {
      */
     public static boolean verify(String text, String md5) {
         String md5Text = md5(text);
+        System.out.println("MD5字符串为:" + md5);
         if (md5Text.equalsIgnoreCase(md5)) {
             System.out.println("MD5验证成功");
             return true;
-
         } else {
             System.out.println("MD5验证失败");
             return false;

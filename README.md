@@ -1,2 +1,2 @@
 # io
-coding com.xiexing.demo
+coding com.xiexing.iodemo

@@ -120,13 +120,39 @@ public class StringTest {
     @Test
     public void subStringTest() {
 
-        String massage1 = "111a我司评估价格为XXX，请修改";
-        String massage2 = "222b我司评估价格为XXX，请修改";
+        String massage1 = "A111a我司评估价格为XXX，请修改";
+        String massage2 = "a222b我司评估价格为XXX，请修改";
         System.out.println(massage1.substring(0,5));
         System.out.println("车价过高,贷款申请已被拒绝," + StringUtils.substringBefore(massage1,"，"));
         System.out.println(massage1.compareTo(massage2));
         System.out.println(massage1.compareToIgnoreCase(massage2));
 
     }
+
+
+
+    @Test
+    public void nullAndBankTest() {
+        String pptyAreaName=null;
+        System.out.println(pptyAreaName);
+        System.out.println(String.valueOf(pptyAreaName));
+        pptyAreaName = null;
+        String pptyAddr = null;
+        String pptyAddrDetail = pptyAreaName + pptyAddr;
+        System.out.println(pptyAddrDetail);
+
+        String url = "heoo";
+        url = url+"haha";
+        System.out.println(url);
+
+        StringBuffer stringBuffer = null;
+        StringBuilder stringBuilder = new StringBuilder();
+        System.out.println((Object) null);
+        System.out.println(stringBuilder);
+    }
+
+
+
+
 
 }

@@ -21,6 +21,7 @@ public class ProxyFactoryTest {
         // 建立目标对象和代理对象的联系
         IUserDao proxy = (IUserDao) new ProxyFactory(target).getProxyInstance();
         log.info(proxy.getClass().toString());
+        log.info("ddddddddddddddddddddd");
         proxy.save();
         proxy.show();
     }
