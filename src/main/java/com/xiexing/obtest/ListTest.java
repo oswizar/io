@@ -1,17 +1,15 @@
-package obtest;
+package com.xiexing.obtest;
 
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  * Copyright (C): 长安新生(深圳)金融投资有限公司
- * FileName: obtest.ListTest
- * Author:   xiexing
+ * FileName: com.xiexing.obtest.ListTest
+ * Author:   com.xiexing
  * Date:     2018/11/8 9:39
  * Description: List测试
  */
@@ -22,6 +20,9 @@ public class ListTest {
     @Test
     public void listTest(){
         List list = new ArrayList();
+//        list = null;
+        System.out.println(list);
+        System.out.println(String.valueOf(list));
         list.add("小明");
         list.add("小冰");
         list.add("小华");
@@ -37,6 +38,13 @@ public class ListTest {
     }
 
 
+    @Test
+    public void arayListTest() {
+        List list = new ArrayList();
+        Map map = new HashMap();
+        System.out.println(list);
+        System.out.println(map);
+    }
 
 
 
