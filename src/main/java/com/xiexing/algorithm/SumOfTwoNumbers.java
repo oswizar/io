@@ -1,4 +1,4 @@
-package obtest;
+package com.xiexing.algorithm;
 
 import org.junit.Test;
 

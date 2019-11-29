@@ -36,7 +36,7 @@ public class SortUtils {
      * @param arr
      */
     public static void selectSort(int[] arr) {
-        // 只需要进行length-1轮比较，因为经过length-1轮之后就已经完全排好序
+        // 只需要进行 length-1 轮比较，因为经过 length-1 轮之后就已经完全排好序
         for (int i = 0; i < arr.length - 1; i++) {
             /**
              * 每一趟循环比较时，minIndex用于存放最值的数组下标

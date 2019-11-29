@@ -1,125 +1,51 @@
-package obtest;
+package com.xiexing.obtest;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.Date;
+import java.util.concurrent.*;
 
 
-public class FutureTest {
+public class FutureTest {}
 
-    public static void main(String[] args) throws InterruptedException {
-
-        FutureTask task1 = new FutureTask("OK");
-        FutureTask task2 = new FutureTask("not OK");
-        FutureTask task3 = new FutureTask("not OK");
-        FutureTask task4 = new FutureTask("not OK");
-        FutureTask task5 = new FutureTask("not OK");
-        FutureTask task6 = new FutureTask("not OK");
-        FutureTask task7 = new FutureTask("not OK");
-        FutureTask task8 = new FutureTask("not OK");
-        FutureTask task9 = new FutureTask("OK");
-
-        ThreadPoolExecutor executor = new ThreadPoolExecutor(
-                10, 50, 100, TimeUnit.MILLISECONDS,
-                new ArrayBlockingQueue<Runnable>(100));
-
-        executor.submit(task1);
-        executor.submit(task2);
-        executor.submit(task3);
-        executor.submit(task4);
-        executor.submit(task5);
-        executor.submit(task6);
-        executor.submit(task7);
-        executor.submit(task8);
-        executor.submit(task9);
-        while (executor.getActiveCount() > 0) {
-            System.out.println("活跃线程为:" + executor.getActiveCount());
-            Thread.sleep(3000);
-        }
-        System.out.println("活跃线程为:" + executor.getActiveCount());
-        executor.shutdown();
-    }
-
-}
-
-
-class ControlTimeOut {
-
-
-    public static <T> T call(Callable<T> callable) {
-        ExecutorService executor = Executors.newCachedThreadPool();
-        Future<T> future = executor.submit(callable);
-        try {
-            T t = future.get(3000, TimeUnit.MILLISECONDS);
-            executor.shutdown();
-            return t;
-        } catch (InterruptedException e) {
-            System.out.println("InterruptedException");
-        } catch (ExecutionException e) {
-            System.out.println("ExecutionException");
-        } catch (TimeoutException e) {
-            // TODO： coding here...
-            System.out.println("TimeoutException");
-        }
-        return null;
-    }
-}
-
-
-class FutureTask implements Runnable {
-
-    private String text;
-
-    @Override
-    public void run() {
-        // TODO Auto-generated method stub
-        String result = ControlTimeOut.call(new CallableImpl(text));
-        System.out.println(text+"============="+Thread.currentThread().getName()+"================"+result);
-    }
-
-    public FutureTask(String text) {
-        super();
-        this.text = text;
-    }
-
-}
-
-
-class CallableImpl implements Callable<String> {
-    private static final String CORRECT_KEY = "OK";
-    private String key = "";
-
-    public CallableImpl(String key) {
-        this.key = key;
-    }
-
-    public String call() {
-        // TODO:真正的业务逻辑
-        if (CORRECT_KEY.equals(this.getKey())) {
-            return "SUCCESS";
-        } else {
+class pool {
+    private static class Caller implements Callable<Boolean> {
+        @Override
+        public Boolean call() {
             try {
-                Thread.sleep(5000); // 阻塞。设置5秒超时，为了Future抛出TimeoutException
-            } catch (InterruptedException e) {
+                Thread.sleep(10000);
+                System.out.println(new Date());
+                return true;
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-            return "FAIL";
+            return false;
         }
     }
 
-    public String getKey() {
-        return key;
+    private static class Runner implements Runnable {
+        @Override
+        public void run() {
+            ExecutorService excutor = Executors.newSingleThreadExecutor();
+            Future<Boolean> future = excutor.submit(new Caller());
+            try {
+                future.get(1, TimeUnit.SECONDS);
+            } catch (TimeoutException e) {
+                System.out.println("timeout");
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                excutor.shutdownNow(); // 强制终止任务
+            }
+        }
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public static void main(String[] args) {
+
+//        ScheduledFuture
+//        ScheduledThreadPoolExecutor
+
+        ScheduledExecutorService service
+                = Executors.newScheduledThreadPool(30);
+        service.scheduleAtFixedRate(
+                new Runner(), 0, 1, TimeUnit.SECONDS);
     }
 }
