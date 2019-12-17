@@ -23,7 +23,7 @@ public class CollectionsTest {
                     System.out.printf("sort: %s; %s\n", s1, s2);
                     return s1.compareTo(s2);
                 })
-                .filter(s -> {
+                .filter(s -> { 
                     System.out.println("filter: " + s);
                     return s.startsWith("a");
                 })

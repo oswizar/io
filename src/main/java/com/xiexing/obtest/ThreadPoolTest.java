@@ -3,6 +3,7 @@ package com.xiexing.obtest;
 import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;
 import java.lang.management.ThreadMXBean;
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -14,66 +15,81 @@ public class ThreadPoolTest {
 
 //    Executor executor = null;
 
-    static Map<Long, String> record = new HashMap<>();
-    static Map<Long, String> interrupt = new HashMap<>();
+    static Map<Long, Long> record = new HashMap<>();
+    static Map<Long, Long> interrupt = new HashMap<>();
 
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, NoSuchFieldException, IllegalAccessException {
         ExecutorService executorService = new ThreadPoolExecutor(
                 30, 30, 0, TimeUnit.SECONDS,
                 new ArrayBlockingQueue<>(10));
 
         ThreadMXBean bean = ManagementFactory.getThreadMXBean();
 
-        record.put(Thread.currentThread().getId(), Thread.currentThread().getName());
+//        record.put(Thread.currentThread().getId(), Thread.currentThread().getName());
         System.out.println("当前线程ID为:" + Thread.currentThread().getId() + "  线程名称为：" + Thread.currentThread().getName());
 
         for (int i = 0; i < 10; i++) {
-            if (i == 5) {
-                // 新建任务
-                Callable call = (Callable<Long>) () -> {
-                    long myThreadId = Thread.currentThread().getId();
-                    String name = Thread.currentThread().getName();
-                    record.put(myThreadId, name);
-                    System.out.println("当前线程ID为:" + myThreadId + "  线程名称为：" + name);
 
-                    // 设置2秒睡眠
-                    TimeUnit.SECONDS.sleep(1);
-                    return myThreadId;
+            if (i == 5) {
+                // 新建任务(任务处理逻辑)
+                int def = i;
+                Callable call = (Callable<Long>) () -> {
+                    Long threadId = Thread.currentThread().getId();
+                    String name = Thread.currentThread().getName();
+                    interrupt.put((long) def, threadId);
+                    System.out.println("当前线程ID为:" + threadId + "  线程名称为：" + name);
+
+                    // 设置睡眠
+                    TimeUnit.SECONDS.sleep(100);
+                    return threadId;
                 };
-                // 手动控制线程
-                Future result = executorService.submit(call);
+
+
+                // 接收线程执行后返回的结果对象
+                FutureTask result = (FutureTask) executorService.submit(call);
+//                long id = Thread.currentThread().getId();
+//                Field runner = result.getClass().getDeclaredField("runner");
+
                 Object callResult = null;
                 try {
                     // 如果在超时时间内，没有数据返回：则抛出TimeoutException异常
 //                    V get(long var1, TimeUnit var2) throws InterruptedException, ExecutionException, TimeoutException;
-                    callResult = result.get(2, TimeUnit.SECONDS);
-                    interrupt.put((Long) callResult, Thread.currentThread().getName());
+
+
+//                    callResult = result.get(50, TimeUnit.SECONDS);
+                    callResult = result.get();
+//                    if (callResult==null) {
+//                        interrupt.put((Long) myThreadId, Thread.currentThread().getName());
+//
+//                    }
+
                     System.out.println("Future获取当前线程返回的结果：" + callResult);
                 } catch (InterruptedException e) {
                     System.out.println("InterruptedException发生");
                 } catch (ExecutionException e) {
                     System.out.println("ExecutionException发生");
-                } catch (TimeoutException e) {
-                    interrupt.put((Long) callResult, Thread.currentThread().getName());
-                    System.out.println("TimeoutException发生，线程超时报错");
-//                    Thread.currentThread().interrupt();
-                    // 如果参数为true并且任务正在运行，那么这个任务将被取消
-                    // 如果参数为false并且任务正在运行，那么这个任务将不会被取消
-//                    result.cancel(false);
-//                    executorService.shutdownNow();
+//                } catch (TimeoutException e) {
+////                    interrupt.put((Long) myThreadId, Thread.currentThread().getName());
+//                    System.out.println("TimeoutException发生，线程超时报错");
+////                    Thread.currentThread().interrupt();
+//                    // 如果参数为true并且任务正在运行，那么这个任务将被取消
+//                    // 如果参数为false并且任务正在运行，那么这个任务将不会被取消
+////                    result.cancel(false);
+////                    executorService.shutdownNow();
                 }
                 Thread.sleep(2000);
             } else {
+                int def = i;
                 Callable call = (Callable<Long>) () -> {
-                    long myThreadId = Thread.currentThread().getId();
+                    Long threadId = Thread.currentThread().getId();
                     String name = Thread.currentThread().getName();
-                    record.put(myThreadId, name);
-                    System.out.println("当前线程ID为:" + myThreadId + "  线程名称为：" + name);
-                    return  myThreadId;
+                    record.put((long) def, threadId);
+                    System.out.println("当前线程ID为:" + threadId + "  线程名称为：" + name);
+                    return  threadId;
                 };
 
-                // 手动控制线程
+                // 接收线程执行后返回的结果对象
                 Future result = executorService.submit(call);
                 try {
                     // 如果在超时时间内，没有数据返回：则抛出TimeoutException异常
@@ -88,22 +104,6 @@ public class ThreadPoolTest {
                 }
                 Thread.sleep(500);
             }
-
-
-//            long myThreadId = Thread.currentThread().getId();
-//            String name = Thread.currentThread().getName();
-//            System.out.println("当前线程ID为:" + myThreadId+"线程名称为"+ name);
-//
-//            // 拿到当前线程下所有子线程，找出名称为"my-thread"的线程并输出该线程的ID
-//            // 这串代码用到了activeCount和enumerate方法，在API的介绍中有详细说明
-//            Thread[] ts = new Thread[Thread.activeCount()];
-//            Thread.enumerate(ts);
-//            for(Thread t: ts) {
-//                if(t.getId() == Thread.currentThread().getId()) {
-//                    System.out.println("从主线程中找到名为my-thread的线程，线程名称为：" + t.getName() + ", 状态为: " + t.getState());
-//                }
-//            }
-
 
             System.out.println("-------------------------------------------------");
 
@@ -123,28 +123,38 @@ public class ThreadPoolTest {
         // 中断线程池中阻塞的线程
         Set<Long> keys = interrupt.keySet();
         for (Long key : keys) {
-            System.out.println("线程id:" + key + "  线程名称:" + interrupt.get(key));
-            Thread thread = findThread(key);
-            System.out.println("查找出来的线程为：" + thread.getName());
-            thread.interrupt();
-            while (thread.isInterrupted()) {
-                System.out.println("成功中断线程---------------------------");
+            if(key==5) {
+                System.out.println("线程id:" + key + "  线程名称:" + interrupt.get(key));
+                Thread thread = findThread(interrupt.get(key));
+                System.out.println("查找出来的线程为：" + thread.getName());
+                thread.interrupt();
+                while (!thread.isInterrupted() && true) {
+                    System.out.println("成功中断线程---------------------------");
+                }
+
             }
+
         }
+
 
         System.out.println("==================================================");
 
-        // 验证阻塞的线程是否成功中断
-        for (Long key : keySet) {
-            System.out.println("线程id:" + key + "  线程名称:" + record.get(key));
-        }
+//        // 验证阻塞的线程是否成功中断
+//        for (Long key : keySet) {
+//            System.out.println("线程id:" + key + "  线程名称:" + record.get(key));
+//        }
 
-        Thread.sleep(1000);
 
-        // 验证阻塞的线程是否成功中断
+
+
         printAllThreadList();
-        System.out.println("==================================================");
+
+        Thread.sleep(10000);
+
         printRunningThreadList();
+
+
+
 
 
         // 关闭线程池
