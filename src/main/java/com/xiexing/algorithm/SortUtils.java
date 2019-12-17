@@ -36,7 +36,7 @@ public class SortUtils {
      * @param arr
      */
     public static void selectSort(int[] arr) {
-        // 只需要进行 length-1 轮比较，因为经过 length-1 轮之后就已经完全排好序
+        // 只需要进行length-1轮比较，因为经过length-1轮之后就已经完全排好序
         for (int i = 0; i < arr.length - 1; i++) {
             /**
              * 每一趟循环比较时，minIndex用于存放最值的数组下标
@@ -137,17 +137,138 @@ public class SortUtils {
         }
     }
 
+    public static void quickSort(int[] arr, int left, int right) {
+        int i, j, temp, t;
+        // 递归终止条件
+        if (left > right) {
+            return;
+        }
 
-        @Test
-        public void test() {
-    //        selectSort(arr);
-    //        bubbleSort(arr);
-            insertionSort(arr);
-    //        shellSortBySwap(arr);
-    //        shellSortByMove(arr);
-            for (int item : arr) {
-                System.out.println(item);
+        i = left;
+        j = right;
+
+        // temp为基准数
+        temp = arr[left];
+        while (i != j) {
+            while (temp <= arr[j] && i < j) {
+                j--;
+            }
+
+            while (temp >= arr[i] && i < j) {
+                i++;
+            }
+            // 如果满足条件就交换
+            if (i < j) {
+                t = arr[i];
+                arr[i] = arr[j];
+                arr[j] = t;
             }
         }
+        // 最后将基准数与i和j相等位置的数交换（之前已经temp = arr[left],交换只需再进行如下两步）
+        arr[left] = arr[i];
+        arr[i] = temp;
+
+        // 递归处理左边的数组
+        quickSort(arr, left, i - 1);
+        // 递归处理右边的数组
+        quickSort(arr, i + 1, right);
+
+    }
+
+
+    /**
+     * 建堆调整
+     *
+     * @param arr             看作是完全二叉树
+     * @param currentRootNode 当前节点位置
+     * @param size            节点总数（数组长度）
+     */
+    public static void heapify(int[] arr, int currentRootNode, int size) {
+        if (currentRootNode < size) {
+            // 定义左右子树的位置
+            int left = 2 * currentRootNode + 1;
+            int right = 2 * currentRootNode + 2;
+
+            // 把当前节点的位置看成是最大值的下标
+            int max = currentRootNode;
+
+            if (left < size) {
+                // 如果比当前节点值大，记录位置
+                if (arr[max] < arr[left]) {
+                    max = left;
+                }
+            }
+            if (right < size) {
+                // 如果比当前节点值大，记录位置
+                if (arr[max] < arr[right]) {
+                    max = right;
+                }
+            }
+
+            // 如果最大的不是根元素位置，那么交换
+            if (max != currentRootNode) {
+                int temp = arr[max];
+                arr[max] = arr[currentRootNode];
+                arr[currentRootNode] = temp;
+
+                // 继续比较，直达完成一次建堆
+                heapify(arr, max, size);
+            }
+
+
+        }
+    }
+
+    /**
+     * 建堆，最大值在堆的顶部（根节点）
+     *
+     * @param arr  数组
+     * @param size 数组长度
+     */
+    public static void maxHeapify(int[] arr, int size) {
+        // 从数组的尾部开始建堆，直到第一个元素（角标为0）
+        for (int i = size - 1; i >= 0; i--) {
+            // 建堆调整
+            heapify(arr, i, size);
+        }
+    }
+
+    /**
+     * 堆排序（建堆，交换；建堆，交换；...）
+     *
+     * @param arr  数组
+     * @param size 数组长度
+     */
+    public static void heapSort(int[] arr, int size) {
+        // 建堆，交换
+        for (int i = 0; i < size; i++) {
+
+            // 每次完成建堆就可以减少一个元素了
+            maxHeapify(arr, size - i);
+
+            // 交换
+            int temp = arr[0];
+            arr[0] = arr[size - 1 - i];
+            arr[size - 1 - i] = temp;
+        }
+
+    }
+
+
+    @Test
+    public void test() {
+        int[] arr = {6, 1, 2, 7, 9, 3, 4, 5, 10, 8};
+        //        selectSort(arr);
+        //        bubbleSort(arr);
+//        insertionSort(arr);
+        //        shellSortBySwap(arr);
+        //        shellSortByMove(arr);
+//        quickSort(arr, 0, arr.length - 1);
+
+        heapSort(arr, arr.length);
+        for (int item : arr) {
+            System.out.println(item);
+        }
+    }
 
 }
