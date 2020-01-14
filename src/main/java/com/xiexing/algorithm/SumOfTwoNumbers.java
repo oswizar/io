@@ -17,14 +17,14 @@ public class SumOfTwoNumbers {
     public int[] solution() {
         int[] arr = new int[]{2, 7, 11, 15};
         int target = 9;
-        Map<Integer,Integer> record = new HashMap<>();
-        for(int j = 0;j<arr.length;j++) {
-            record.put(arr[j],j);
+        Map<Integer, Integer> record = new HashMap<>();
+        for (int j = 0; j < arr.length; j++) {
+            record.put(arr[j], j);
         }
         for (int i = 0; i < arr.length; i++) {
             int complement = target - arr[i];
-            if (record.containsKey(complement)) {
-                return  new int[] {i,record.get(complement)};
+            if (record.containsKey(complement) && record.get(complement) != i) {
+                return new int[]{i, record.get(complement)};
 
             }
 
