@@ -408,7 +408,7 @@ public class DateUtil {
     }
 
     /**
-     * 将字符串抓化为日期
+     * 将字符串抓 化为日期
      *
      * @param dateStr 日期字符串
      * @param format  格式化，如"yyyy-MM-dd HH:mm:ss"
@@ -550,16 +550,19 @@ public class DateUtil {
     }  
     
     public static void main(String[] args) {
+
+
 //        List<Long> result = DateUtil.getSEStamp("2017-7-4 00:00:00");
 //        System.out.println(result);
 //        result = DateUtil.getSEStamp(1499183998000L);
 //        System.out.println(result);
-    	long time = DateUtil.getFirstDayOfWeek();
-    	System.out.println(time);
-    	System.out.println(DateUtil.getFirstDayOfMonth());
+//    	long time = DateUtil.getFirstDayOfWeek();
+//    	System.out.println(time);
+//    	System.out.println(DateUtil.getFirstDayOfMonth());
     	
 
     }
+
 
     public static Integer todayInt() {
         SimpleDateFormat ONLY_DATE_INT = new SimpleDateFormat("yyyyMMdd");

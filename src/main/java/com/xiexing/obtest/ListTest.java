@@ -1,5 +1,6 @@
 package com.xiexing.obtest;
 
+import com.xiexing.entity.Person;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +17,7 @@ import java.util.*;
 
 public class ListTest {
     private Logger log = LoggerFactory.getLogger(this.getClass());
+    static double basic;
 
     @Test
     public void listTest(){
@@ -40,10 +42,17 @@ public class ListTest {
 
     @Test
     public void arayListTest() {
-        List list = new ArrayList();
+        List<Person> list = new ArrayList();
         Map map = new HashMap();
         System.out.println(list);
         System.out.println(map);
+
+    }
+
+    public static void main(String[] args) {
+        int i;
+        System.out.println("000:"+basic + ":111");
+// byte short int long char boolean float double
     }
 
 

@@ -1,5 +1,7 @@
 package com.xiexing.algorithm.linkedlist;
 
+import java.util.Collection;
+
 public class Node {
 
     /**

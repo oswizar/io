@@ -1,5 +1,6 @@
 package com.xiexing.obtest;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
@@ -14,7 +15,7 @@ import static java.util.Objects.hash;
  * Date:     2018/11/15 15:48
  * Description: 字符串测试
  */
-
+@Slf4j
 public class StringTest {
 
     public static void main(String[] args) {
@@ -149,6 +150,36 @@ public class StringTest {
         StringBuilder stringBuilder = new StringBuilder();
         System.out.println((Object) null);
         System.out.println(stringBuilder);
+    }
+
+
+    @Test
+    public void  indexOfTest() {
+        String s = "5年期收益曲线(2-)";
+
+        int startIndex = s.indexOf("(");
+        log.info("开始下标为：{}",startIndex);
+
+        int endIndex = s.indexOf(")");
+        log.info("endIndex为：{}",endIndex);
+
+        int secondIndex = s.indexOf(")",startIndex);
+        log.info("第二下标为：{}",secondIndex);
+        String subStr = s.substring(startIndex+1,endIndex);
+        log.info("截取的字串为：{}",subStr);
+        log.info(s.replace(subStr,"2"));
+        s = s.replace(subStr,"2");
+
+        log.info(s);
+    }
+
+
+
+    @Test
+    public void intOrInteger() {
+        String limitStr = "5";
+        Integer limit = Integer.parseInt(limitStr);
+        log.info("limit:{}",limit);
     }
 
 
