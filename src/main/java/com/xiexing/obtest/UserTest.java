@@ -1,10 +1,3 @@
-/**
- * Copyright (C): 长安新生(深圳)金融投资有限公司
- * FileName: UserTest
- * Author:   com.xiexing
- * Date:     2018/11/26 14:44
- * Description:
- */
 package com.xiexing.obtest;
 
 import com.xiexing.entity.Student;
