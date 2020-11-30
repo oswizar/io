@@ -8,6 +8,7 @@ import org.junit.Test;
  * @description:
  */
 public class SortUtils {
+    static int count = 0;
 
 
     private static final int[] arr = {23, 5, 1, 4, 2, 8, 16, 15, 28};
@@ -20,15 +21,15 @@ public class SortUtils {
      * @param b
      */
     public static void swap(int[] arr, int a, int b) {
-        // 常规做法(未考虑溢出情况)
-//        arr[a] = arr[a] + arr[b];
-//        arr[b] = arr[a] - arr[b];
-//        arr[a] = arr[a] - arr[b];
+        // 常规做法
+        int temp = arr[a];
+        arr[a] = arr[b];
+        arr[b] = temp;
 
-        // 大神操作,异或防止以上情况(arr[a] = arr[a] + arr[b])溢出
-        arr[a] ^= arr[b];
-        arr[b] ^= arr[a];
-        arr[a] ^= arr[b];
+        // 大神操作
+//        arr[a] ^= arr[b];
+//        arr[b] ^= arr[a];
+//        arr[a] ^= arr[b];
     }
 
 
@@ -64,11 +65,13 @@ public class SortUtils {
         // 只需要进行length-1轮比较，因为经过length-1轮之后就已经完全排好序
         for (int i = 0; i < arr.length - 1; i++) {
             // 设定一个标记，若为true，则表示此次循环没有进行交换，也就是待排序列已经有序，排序已然完成
-            Boolean flag = true;
+            boolean flag = true;
             // 每轮都从头开始比较，每轮都能找到最值
             for (int j = 0; j < arr.length - 1 - i; j++) {
+                System.out.println(count++);
                 if (arr[j] > arr[j + 1]) {
                     swap(arr, j, j + 1);
+
                     // 只要发生交换，更改flag的状态
                     flag = false;
                 }
@@ -137,6 +140,8 @@ public class SortUtils {
         }
     }
 
+    // 6 1 2 7 9 3 4 5 10 8
+    //
     public static void quickSort(int[] arr, int left, int right) {
         int i, j, temp, t;
         // 递归终止条件
@@ -152,10 +157,12 @@ public class SortUtils {
         while (i != j) {
             while (temp <= arr[j] && i < j) {
                 j--;
+                System.out.println(count++);
             }
 
             while (temp >= arr[i] && i < j) {
                 i++;
+                System.out.println(count++);
             }
             // 如果满足条件就交换
             if (i < j) {
@@ -257,18 +264,69 @@ public class SortUtils {
 
     @Test
     public void test() {
-        int[] arr = {6, 1, 2, 7, 9, 3, 4, 5, 10, 8};
+//        int[] arr = {6, 10, 2, 7, 9, 3, 4, 5, 1, 8};
+//        int[] arr = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+//        int[] arr = {6, 1, 2, 7, 9, 3, 4, 5, 10, 8};
         //        selectSort(arr);
-        //        bubbleSort(arr);
+//        bubbleSort(arr);
 //        insertionSort(arr);
         //        shellSortBySwap(arr);
         //        shellSortByMove(arr);
-//        quickSort(arr, 0, arr.length - 1);
+        quickSort(arr, 0, arr.length - 1);
+//        fun2(arr, arr.length);
+//        fun3(arr);
 
-        heapSort(arr, arr.length);
+//        heapSort(arr, arr.length);
         for (int item : arr) {
             System.out.println(item);
         }
+    }
+
+    void fun2(int Array[], int len) {
+        int i = 0;
+        int temp = 0;
+        while (i < len) {
+            temp++;
+            if (i == 0 || Array[i - 1] < Array[i]) {
+                i += temp;
+                temp = 0;
+            } else {
+                int tempdata = Array[i];
+                Array[i] = Array[i - 1];
+                Array[i - 1] = tempdata;
+                i--;
+            }
+        }
+    }
+
+    public void fun3(int[] arr) {
+
+//        int a[]={22,3,6,54,86,21,35,1,65,4};
+        // {6, 10, 2, 7, 9, 3, 4, 5, 1, 8}
+        int team = arr.length - 1;
+        for (int i = 0; i < team; i++) {
+            boolean flag = true;
+            if (arr[i] > arr[i + 1]) {
+                int tem = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = tem;
+                flag = false;
+                System.out.println(count++);
+            }
+            if (i == team - 1) {
+                if (flag) {
+                    break;
+                }
+                i = -1;
+                team--;
+            }
+        }
+
+//        System.out.println("排好序：");
+//        for(int aa:arr){
+//            System.out.print(aa+" ");
+//        }
     }
 
 }

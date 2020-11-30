@@ -11,9 +11,28 @@ public class SumOfTwoNumber {
 
     @Test
     public void show() {
-        int[] arrays = {2, 7, 5, 8, 11};
+        int[] arrays = {2, 5, 7, 8, 11};
         int target = 12;
-        System.out.println(Arrays.toString(sumOfTwoNumbers(arrays, target)));
+        System.out.println(Arrays.toString(twoSumByDoublePointer(arrays, target)));
+    }
+
+    /**
+     * 1. 两数之和(双指针法，前提：升序数组)
+     */
+    public int[] twoSumByDoublePointer (int[] nums, int target) {
+        int left = 0;
+        int right = nums.length - 1;
+        while (left < right) {
+            int sum = nums[left] + nums[right];
+            if (sum > target) {
+                right--;
+            } else if (sum < target) {
+                left++;
+            } else {
+                return new int[]{left,right};
+            }
+        }
+        return new int[]{-1,-1};
     }
 
 //    @Test

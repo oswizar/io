@@ -21,23 +21,36 @@ public class ListTest {
 
     @Test
     public void listTest(){
-        List list = new ArrayList();
+        List<Person> list = new ArrayList<>();
 //        list = null;
         System.out.println(list);
         System.out.println(String.valueOf(list));
-        list.add("小明");
-        list.add("小冰");
-        list.add("小华");
+        list.add(new Person("小","明",11));
+        list.add(new Person("小","冰",12));
+        list.add(new Person("小","华",13));
 
-        Iterator iterator = list.iterator();
-        while (iterator.hasNext()){
-            log.info("{}",iterator.next());
+        System.out.println(list);
 
+        for (Person person:list) {
+            if (person.getAge() == 12) {
+                person.setAge(15);
+            }
         }
 
-        list.equals("aaa");
-        System.out.println(list.hashCode());
+        System.out.println(list);
+
+
+
+//        Iterator iterator = list.iterator();
+//        while (iterator.hasNext()){
+//            log.info("{}",iterator.next());
+//
+//        }
+//
+//        list.equals("aaa");
+//        System.out.println(list.hashCode());
     }
+
 
 
     @Test

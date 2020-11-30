@@ -1,5 +1,12 @@
 package com.xiexing.util;
 
+import com.alibaba.fastjson.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -68,18 +75,17 @@ public class DateUtil {
         cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
         return sdf.format(cal.getTime());
     }
-    
+
     /**
      * 根据格式获取本周一的开始时间戳
      *
      * @return
      */
-    public static long getFirstDayOfWeek()
-    {
-    	Calendar cal = Calendar.getInstance();
-    	cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONDAY), cal.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
-    	cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-    	return  cal.getTimeInMillis();
+    public static long getFirstDayOfWeek() {
+        Calendar cal = Calendar.getInstance();
+        cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONDAY), cal.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
+        cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+        return cal.getTimeInMillis();
     }
 
     /**
@@ -95,7 +101,7 @@ public class DateUtil {
         cal.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
         return sdf.format(cal.getTime());
     }
-    
+
     /**
      * 根据格式获取本周末的结束时间戳
      *
@@ -108,56 +114,54 @@ public class DateUtil {
         cal.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
         return cal.getTimeInMillis();
     }
-    
-    /** 
-    * @Description: 获取本月第一天的时间戳
-    * @param @return  
-    * @return long 
-    * @throws 
-    */ 
-    public static long getFirstDayOfMonth()
-    {
-    	Calendar cal = Calendar.getInstance();
-    	cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONDAY), cal.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
-    	cal.set(Calendar.DAY_OF_MONTH, cal.getActualMinimum(Calendar.DAY_OF_MONTH));
-    	return  cal.getTimeInMillis();
+
+    /**
+     * @param @return
+     * @return long
+     * @throws
+     * @Description: 获取本月第一天的时间戳
+     */
+    public static long getFirstDayOfMonth() {
+        Calendar cal = Calendar.getInstance();
+        cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONDAY), cal.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
+        cal.set(Calendar.DAY_OF_MONTH, cal.getActualMinimum(Calendar.DAY_OF_MONTH));
+        return cal.getTimeInMillis();
     }
-    public static long getFirstDayOfMonth(int month)
-    {
-    	Calendar cal = Calendar.getInstance();
-    	cal.set(cal.get(Calendar.YEAR), month-1, cal.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
-    	cal.set(Calendar.DAY_OF_MONTH, cal.getActualMinimum(Calendar.DAY_OF_MONTH));
-    	return  cal.getTimeInMillis();
+
+    public static long getFirstDayOfMonth(int month) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(cal.get(Calendar.YEAR), month - 1, cal.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
+        cal.set(Calendar.DAY_OF_MONTH, cal.getActualMinimum(Calendar.DAY_OF_MONTH));
+        return cal.getTimeInMillis();
     }
-    
-    
-    /** 
+
+
+    /**
+     * @param @return
+     * @return long
+     * @throws
      * @Description: 获取本月最后一天的时间戳
-     * @param @return  
-     * @return long 
-     * @throws 
-     */ 
-     public static long getLastDayOfMonth()
-     {
-     	Calendar cal = Calendar.getInstance(Locale.CHINA);
-     	cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
-     	//将小时至0  
-     	cal.set(Calendar.HOUR_OF_DAY, 23);  
-     	//将分钟至0  
-     	cal.set(Calendar.MINUTE, 59);  
-     	//将秒至0  
-     	cal.set(Calendar.SECOND,59);  
-     	//将毫秒至0  
-     	cal.set(Calendar.MILLISECOND, 999); 
-     	return cal.getTimeInMillis();
-     }
-     public static long getLastDayOfMonth(int month)
-     {
-    	 Calendar cal = Calendar.getInstance();
-     	cal.set(cal.get(Calendar.YEAR), month-1, cal.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
-     	cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
-     	return  cal.getTimeInMillis();
-     }
+     */
+    public static long getLastDayOfMonth() {
+        Calendar cal = Calendar.getInstance(Locale.CHINA);
+        cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+        //将小时至0
+        cal.set(Calendar.HOUR_OF_DAY, 23);
+        //将分钟至0
+        cal.set(Calendar.MINUTE, 59);
+        //将秒至0
+        cal.set(Calendar.SECOND, 59);
+        //将毫秒至0
+        cal.set(Calendar.MILLISECOND, 999);
+        return cal.getTimeInMillis();
+    }
+
+    public static long getLastDayOfMonth(int month) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(cal.get(Calendar.YEAR), month - 1, cal.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
+        cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+        return cal.getTimeInMillis();
+    }
 
 
     /**
@@ -509,58 +513,44 @@ public class DateUtil {
         return null;
     }
 
-    /** 
-    * start 
-    * 本周开始时间戳 
-    */  
-    public static Long getWeekStartTime() {  
-        Calendar cal = Calendar.getInstance();  
-        cal.setFirstDayOfWeek(Calendar.MONDAY);  
-        // 获取星期一开始时间戳  
-        cal.set(Calendar. DAY_OF_WEEK, Calendar.MONDAY);  
-        //将小时至0  
-    	cal.set(Calendar.HOUR_OF_DAY, 0);  
-    	//将分钟至0  
-    	cal.set(Calendar.MINUTE, 0);  
-    	//将秒至0  
-    	cal.set(Calendar.SECOND,0);  
-    	//将毫秒至0  
-    	cal.set(Calendar.MILLISECOND, 0); 
+    /**
+     * start
+     * 本周开始时间戳
+     */
+    public static Long getWeekStartTime() {
+        Calendar cal = Calendar.getInstance();
+        cal.setFirstDayOfWeek(Calendar.MONDAY);
+        // 获取星期一开始时间戳
+        cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+        //将小时至0
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        //将分钟至0
+        cal.set(Calendar.MINUTE, 0);
+        //将秒至0
+        cal.set(Calendar.SECOND, 0);
+        //将毫秒至0
+        cal.set(Calendar.MILLISECOND, 0);
         return cal.getTimeInMillis();
-    } 
-    
-    /** 
-    * end 
-    * 本周结束时间戳 
-    */  
-    public static Long getWeekEndTime() {  
-        Calendar cal = Calendar.getInstance();  
-        cal.setFirstDayOfWeek(Calendar.MONDAY);  
-        // 获取星期日结束时间戳  
-        cal.set(Calendar. DAY_OF_WEEK, Calendar.SUNDAY);  
-        //将小时至0  
-    	cal.set(Calendar.HOUR_OF_DAY, 23);  
-    	//将分钟至0  
-    	cal.set(Calendar.MINUTE, 59);  
-    	//将秒至0  
-    	cal.set(Calendar.SECOND,59);  
-    	//将毫秒至0  
-    	cal.set(Calendar.MILLISECOND, 999); 
-        return cal.getTimeInMillis();  
-    }  
-    
-    public static void main(String[] args) {
+    }
 
-
-//        List<Long> result = DateUtil.getSEStamp("2017-7-4 00:00:00");
-//        System.out.println(result);
-//        result = DateUtil.getSEStamp(1499183998000L);
-//        System.out.println(result);
-//    	long time = DateUtil.getFirstDayOfWeek();
-//    	System.out.println(time);
-//    	System.out.println(DateUtil.getFirstDayOfMonth());
-    	
-
+    /**
+     * end
+     * 本周结束时间戳
+     */
+    public static Long getWeekEndTime() {
+        Calendar cal = Calendar.getInstance();
+        cal.setFirstDayOfWeek(Calendar.MONDAY);
+        // 获取星期日结束时间戳
+        cal.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+        //将小时至0
+        cal.set(Calendar.HOUR_OF_DAY, 23);
+        //将分钟至0
+        cal.set(Calendar.MINUTE, 59);
+        //将秒至0
+        cal.set(Calendar.SECOND, 59);
+        //将毫秒至0
+        cal.set(Calendar.MILLISECOND, 999);
+        return cal.getTimeInMillis();
     }
 
 
@@ -580,8 +570,7 @@ public class DateUtil {
 
 
     /**
-     * @param date8
-     *            : “yyyyMMdd”格式的日期字符串
+     * @param date8 : “yyyyMMdd”格式的日期字符串
      * @return 值为yyyy-MM-dd的字符串代表日期，若是格式错误返回空字符串
      */
     public static String formatDate(Integer date8) {
@@ -629,8 +618,7 @@ public class DateUtil {
     /**
      * 返回当天零点的时间
      *
-     * @param date
-     *            日期
+     * @param date 日期
      * @return 当天零点
      */
     public static Date thatDay(Date date) {
@@ -648,8 +636,7 @@ public class DateUtil {
     /**
      * 返回次日零点的时间
      *
-     * @param date
-     *            日期
+     * @param date 日期
      * @return 当天零点
      */
     public static Date nextDay(Date date) {
@@ -661,8 +648,7 @@ public class DateUtil {
     }
 
     /**
-     * @param date10
-     *            : “yyyy-MM-dd”格式的日期字符串
+     * @param date10 : “yyyy-MM-dd”格式的日期字符串
      * @return 值为yyyyMMdd的整型代表日期，若是格式错误返回null
      */
     public static Integer parseDateInt(String date10) {
@@ -679,5 +665,53 @@ public class DateUtil {
 
         return result;
     }
+
+
+    public JSONObject request(String httpArg) {
+        BufferedReader reader = null;
+        String result = null;
+        JSONObject jsonObjectResult = null;
+        StringBuffer sbf = new StringBuffer();
+        String httpUrl = "http://api.goseek.cn/Tools/holiday?date=" + httpArg;
+
+        try {
+            URL url = new URL(httpUrl);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.connect();
+            InputStream is = connection.getInputStream();
+            reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+            String strRead = null;
+            while ((strRead = reader.readLine()) != null) {
+                sbf.append(strRead);
+                sbf.append("\r\n");
+            }
+            reader.close();
+            result = sbf.toString();
+//            JSONObject.
+            jsonObjectResult = JSONObject.parseObject(result);//转为JSONObject对象
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return jsonObjectResult;
+    }
+
+
+
+
+    public static void main(String[] args) {
+
+//        List<Long> result = DateUtil.getSEStamp("2017-7-4 00:00:00");
+//        System.out.println(result);
+//        result = DateUtil.getSEStamp(1499183998000L);
+//        System.out.println(result);
+//        long time = DateUtil.getFirstDayOfWeek();
+//        System.out.println(time);
+//        System.out.println(DateUtil.getFirstDayOfMonth());
+
+        JSONObject a = new DateUtil().request("20180101");
+        System.out.println(a);
+    }
+
 
 }

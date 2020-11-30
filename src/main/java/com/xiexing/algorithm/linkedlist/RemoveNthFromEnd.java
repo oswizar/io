@@ -1,5 +1,7 @@
 package com.xiexing.algorithm.linkedlist;
 
+import org.junit.Test;
+
 public class RemoveNthFromEnd {
 
     /**
@@ -40,28 +42,64 @@ public class RemoveNthFromEnd {
      * 当第一个指针到达最后一个结点,此时第二个指针将指向从最后一个结点数起的第 n+1 个结点。
      * 重新链接第二个指针所引用的结点的 next 指针,指向该结点的下下个结点即可。
      */
+//    public ListNode removeNthFromEnd(ListNode head, int n) {
+//        // 定义一个哑结点
+//        ListNode dummy = new ListNode(0);
+//        // 哑结点指向head
+//        dummy.next = head;
+//        // 初始化两个辅助指针
+//        ListNode first = dummy;
+//        ListNode second = dummy;
+//        int len = n + 1;
+//        // 先让first指针走到n+1的位置
+//        while (len > 0) {
+//            first = first.next;
+//            len--;
+//        }
+//        // second从链表开头，与first保持n的间隔，同时移动，直到first到链表尾部
+//        while (first != null) {
+//            first = first.next;
+//            second = second.next;
+//        }
+//        // 把第(L - n)个结点的 next 指针重新链接至第(L - n + 2)个结点
+//        second.next = second.next.next;
+//        return dummy.next;
+//    }
+
+
+    /**
+     * 19. 删除链表的倒数第N个节点(双指针法)
+     */
     public ListNode removeNthFromEnd(ListNode head, int n) {
         // 定义一个哑结点
         ListNode dummy = new ListNode(0);
         // 哑结点指向head
         dummy.next = head;
-        // 初始化两个辅助指针
-        ListNode first = dummy;
-        ListNode second = dummy;
-        int len = n + 1;
-        // 先让first指针走到n+1的位置
-        while (len > 0) {
-            first = first.next;
-            len--;
+        // 定义双指针
+        ListNode slow, fast;
+        // 初始化双指针
+        slow = fast = dummy;
+        // 先让 fast 走 n 步
+        while (n-- >= 0) {
+            fast = fast.next;
         }
-        // second从链表开头，与first保持n的间隔，同时移动，直到first到链表尾部
-        while (first != null) {
-            first = first.next;
-            second = second.next;
+        // fast 和 slow 以相同的速度同时前进，直到 fast 走到链表尾部
+        while (fast != null) {
+            fast = fast.next;
+            slow = slow.next;
         }
-        // 把第(L - n)个结点的 next 指针重新链接至第(L - n + 2)个结点
-        second.next = second.next.next;
+        // slow.next 就是倒数第 n 个节点，删除它
+        slow.next = slow.next.next;
         return dummy.next;
+    }
+
+
+    @Test
+    public void show() {
+        int i = 3;
+        while (--i > 0) {
+            System.out.println(i);
+        }
     }
 
 
