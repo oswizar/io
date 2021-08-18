@@ -1,11 +1,6 @@
-package com.xiexing.algorithm;
+package com.xiexing.algorithm.initial;
 
 import org.junit.Test;
-
-import javax.sound.midi.Soundbank;
-import java.io.File;
-import java.lang.reflect.Field;
-import java.util.Arrays;
 
 public class Palindrome {
 

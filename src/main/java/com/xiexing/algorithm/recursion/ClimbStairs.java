@@ -2,11 +2,23 @@ package com.xiexing.algorithm.recursion;
 
 import org.junit.Test;
 
+import java.util.List;
+
 public class ClimbStairs {
 
     @Test
     public void show() {
         System.out.println(climbStairs(45));
+
+        Integer a = new Integer(1456);
+        int b = 1456;
+        String aaa = "ddddd";
+        char[] chars = aaa.toCharArray();
+        int[] bbb = new int[] {1,3,6,5};
+        System.out.println(bbb);
+        System.out.println(chars);
+        System.out.println(a == b);
+        System.out.println(a.equals(b));
     }
 
     /**

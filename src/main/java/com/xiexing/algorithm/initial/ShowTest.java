@@ -1,4 +1,4 @@
-package com.xiexing.algorithm;
+package com.xiexing.algorithm.initial;
 
 import org.junit.Test;
 
@@ -41,7 +41,7 @@ public class ShowTest {
     public void bubble(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             // 设置标志位
-            Boolean flag = true;
+            boolean flag = true;
             for (int j = 0; j < arr.length - 1 - i; j++) {
                 if (arr[j] > arr[j + 1]) {
                     exchange(arr, j, j + 1);

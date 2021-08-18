@@ -38,9 +38,9 @@ public class LambdaDemo {
     public void print() {
 
         List<Person> guiltyPersons = Arrays.asList(
-                new Person("Yixing", "Zhao", 25),
-                new Person("Yanggui", "Li", 30),
-                new Person("Chao", "Ma", 29)
+//                new Person("Yixing", "Zhao", 25),
+//                new Person("Yanggui", "Li", 30),
+//                new Person("Chao", "Ma", 29)
         );
 
 //        checkAndExecute(

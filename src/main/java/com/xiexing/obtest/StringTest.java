@@ -177,9 +177,21 @@ public class StringTest {
 
     @Test
     public void intOrInteger() {
-        String limitStr = "5";
-        Integer limit = Integer.parseInt(limitStr);
-        log.info("limit:{}",limit);
+        String s = "123555";
+        String substring = s.substring(3, 5);
+        System.out.println(s);
+
+        System.out.print("1111111111111111");
+        System.out.print("\r\n");
+        System.out.print("2222222222222222");
+        System.out.print("\r");
+        System.out.print("\r");
+        System.out.print("3333333333333333");
+        System.out.print("\r\n");
+        System.out.print("\r\n");
+        System.out.print("4444444444444444");
+        List list = null;
+        System.out.println(list);
     }
 
 

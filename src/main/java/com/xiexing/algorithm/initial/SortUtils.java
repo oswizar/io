@@ -1,4 +1,4 @@
-package com.xiexing.algorithm;
+package com.xiexing.algorithm.initial;
 
 import org.junit.Test;
 
@@ -25,6 +25,10 @@ public class SortUtils {
         int temp = arr[a];
         arr[a] = arr[b];
         arr[b] = temp;
+
+        arr[a] = arr[a] ^ arr[b];
+        arr[b] = arr[a] ^ arr[b];
+        arr[a] = arr[a] ^ arr[b];
 
         // 大神操作
 //        arr[a] ^= arr[b];
