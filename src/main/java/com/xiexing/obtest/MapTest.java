@@ -1,13 +1,13 @@
 package com.xiexing.obtest;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
+import org.springframework.jdbc.datasource.init.ScriptUtils;
 
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Slf4j
 public class MapTest {
@@ -51,6 +51,13 @@ public class MapTest {
 //                    log.info(entry.getKey() + " : " + entry.getValue());
 //                }
 //        );
+
+        String ss = "[{\"123\" : \"456\"}]";
+        JSONArray array = JSON.parseArray(ss);
+        List<Map> maps = array.toJavaList(Map.class);
+        System.out.println(maps);
+
+        System.out.println(Calendar.getInstance().get(Calendar.YEAR));
 
     }
 
