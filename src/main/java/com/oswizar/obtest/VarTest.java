@@ -70,11 +70,6 @@ public class VarTest {
 
 
     public static void main(String[] args) {
-        List list = new ArrayList<>();
-        list.add(1);
-        list.add("2323");
-
-
 
         List<Integer> list1 = new ArrayList<>();
         list1.add(1);

@@ -13,9 +13,6 @@ public class MiniMiniMusicApp {
 
 		String s;
 		while(true){
-
-
-
 			Thread.sleep(2000);
 			MiniMiniMusicApp mini = new MiniMiniMusicApp();
 			mini.play();
