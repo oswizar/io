@@ -1,2 +1,2 @@
 # io
-coding com.xiexing.iodemo
+coding com.oswizar.iodemo
