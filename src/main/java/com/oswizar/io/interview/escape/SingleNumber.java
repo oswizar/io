@@ -22,6 +22,7 @@ class Solution {
                 map.put(num, 3);
             } else {
                 map.put(num, 1);
+                new String();
             }
         }
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {

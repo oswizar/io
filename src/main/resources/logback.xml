@@ -14,7 +14,7 @@
     <timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss"/>
 
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-        <file>/logs/testFile-${bySecond}.log</file>
+        <file>/tmp/logs/testFile-${bySecond}.log</file>
         <append>true</append>
         <!-- encoders are assigned the type
              ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
@@ -24,10 +24,10 @@
     </appender>
 
     <appender name="DAYFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/logs/logFile.log</file>
+        <file>/tmp/logs/logFile.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- daily rollover -->
-            <fileNamePattern>/logs/logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>./logs/logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
 
             <!-- keep 30 days' worth of history capped at 3GB total size -->
             <maxHistory>30</maxHistory>
@@ -42,8 +42,8 @@
 
     <root level="debug">
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="DAYFILE"/>
-        <appender-ref ref="FILE"/>
+<!--        <appender-ref ref="DAYFILE"/>-->
+<!--        <appender-ref ref="FILE"/>-->
     </root>
 </configuration>
 
