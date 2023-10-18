@@ -1,7 +1,6 @@
 package com.oswizar.io.sample.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
 /**
  * @author : oswizar
@@ -10,15 +9,9 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Person {
     private String firstName;
     private String lastName;
     private int age;
-
-//    Person(String firstName, String lastName, int age) {
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//        this.age = age;
-//
-//    }
 }

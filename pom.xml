@@ -4,28 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.xiexing</groupId>
+    <groupId>com.oswizar</groupId>
     <artifactId>io</artifactId>
     <version>1.0-SNAPSHOT</version>
-<!--    <build>-->
-<!--        <plugins>-->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-compiler-plugin</artifactId>-->
-<!--                <configuration>-->
-<!--                    <source>8</source>-->
-<!--                    <target>8</target>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-<!--        </plugins>-->
-<!--    </build>-->
 
     <properties>
         <!-- 设置 Spring 的版本 -->
         <org.springframework.version>5.1.8.RELEASE</org.springframework.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -41,7 +26,7 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
-            <!--<scope>compile</scope>-->
+            <scope>compile</scope>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
@@ -72,8 +57,7 @@
             <version>1.11</version>
         </dependency>
 
-        <!--4:spring依赖 -->
-        <!--1)spring核心依赖  -->
+        <!--1)spring 核心依赖  -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -111,7 +95,6 @@
             <artifactId>spring-webmvc</artifactId>
             <version>${org.springframework.version}</version>
         </dependency>
-
         <!-- 4)spring test相关依赖 -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -125,6 +108,7 @@
             <artifactId>lombok</artifactId>
             <version>1.18.4</version>
         </dependency>
+
         <dependency>
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
@@ -147,7 +131,6 @@
             <version>3.1.0</version>
         </dependency>
 
-
         <!-- 性能测试工具 JMH（Java Microbenchmark Harness，JAVA 微基准测试套件） -->
         <!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-core -->
         <dependency>
@@ -163,13 +146,13 @@
             <scope>provided</scope>
         </dependency>
 
-
         <!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
             <version>4.1.42.Final</version>
         </dependency>
+
         <dependency>
             <groupId>org.dom4j</groupId>
             <artifactId>dom4j</artifactId>
@@ -182,8 +165,6 @@
             <version>3.3.0</version>
         </dependency>
 
-
     </dependencies>
-
 
 </project>

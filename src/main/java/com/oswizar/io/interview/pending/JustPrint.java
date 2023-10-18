@@ -13,17 +13,18 @@ public class JustPrint extends Thread {
 
 
         int[] binarySearch = {1, 3, 5, 6, 12, 23, 34, 45, 76, 98};
-        int[] quickSort = {1, 2, 3, 4, 5, -100, -50, 0, 10, 20};
-        int[] mergeSort = {1, 7, 5, 6, 2, 23, 4, 5, 16, 8};
+        int[] quickSort = {1, 2, 3, 4, 5, -100, -50, 0, 5, 3, 10, 20};
+        int[] mergeSort = {1, 7, 5, 6, 2, 23, 4, 5, 16, 8, 5, 3, 10, 20};
 
 //        int index = binarySearch(binarySearch, 0, binarySearch.length - 1, 349);
 //        System.out.println(index);
 
-        quickSort(quickSort, 0, quickSort.length - 1);
+//        quickSort(quickSort, 0, quickSort.length - 1);
 //        System.out.println(Arrays.toString(quickSort));
 
-//        mergeSort(mergeSort, 0, mergeSort.length - 1);
-        System.out.println(Arrays.toString(quickSort));
+        mergeSort(mergeSort, 0, mergeSort.length - 1);
+//        System.out.println(Arrays.toString(quickSort));
+        System.out.println(Arrays.toString(mergeSort));
 
 
     }
@@ -45,7 +46,7 @@ public class JustPrint extends Thread {
 
 
     public static void quickSort(int[] arr, int start, int end) {
-        if (start > end) {
+        if (start >= end) {
             return;
         }
         int left = start, right = end;
@@ -55,20 +56,18 @@ public class JustPrint extends Thread {
                 right--;
             }
             if (left < right) {
-                arr[left] = arr[right];
-                left++;
+                arr[left++] = arr[right];
             }
             while (left < right && arr[left] <= pivot) {
                 left++;
             }
             if (left < right) {
-                arr[right] = arr[left];
-                right--;
+                arr[right--] = arr[left];
             }
         }
-        arr[left] = pivot;
-        quickSort(arr, start, left - 1);
-        quickSort(arr, left + 1, end);
+        arr[right] = pivot;
+        quickSort(arr, start, right - 1);
+        quickSort(arr, right + 1, end);
     }
 
 
@@ -86,11 +85,7 @@ public class JustPrint extends Thread {
         int[] temp = new int[end - start + 1];
         int p = 0, p1 = start, p2 = mid + 1;
         while (p1 <= mid && p2 <= end) {
-            if (arr[p1] <= arr[p2]) {
-                temp[p++] = arr[p1++];
-            } else {
-                temp[p++] = arr[p2++];
-            }
+            temp[p++] = arr[p1] <= arr[p2] ? arr[p1++] : arr[p2++];
         }
         while (p1 <= mid) {
             temp[p++] = arr[p1++];
@@ -98,7 +93,6 @@ public class JustPrint extends Thread {
         while (p2 <= end) {
             temp[p++] = arr[p2++];
         }
-
         for (int i = 0; i < temp.length; i++) {
             arr[start + i] = temp[i];
         }
