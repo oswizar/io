@@ -1,9 +1,5 @@
 package com.oswizar.io.concurrency;
 
-import io.netty.util.concurrent.DefaultThreadFactory;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.LinkedList;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;

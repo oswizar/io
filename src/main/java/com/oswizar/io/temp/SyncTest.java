@@ -1,10 +1,15 @@
 package com.oswizar.io.temp;
 
+import cn.hutool.core.util.IdUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 
+import java.math.BigInteger;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -15,30 +20,33 @@ public class SyncTest {
 
     private final ThreadLocal<String> threadLocal = new InheritableThreadLocal<>();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
 
-        List<Integer> l1 = Stream.of(  3, 4, 5,6, 3, 4,5,6).collect(Collectors.toList());
-        List<Integer> l2 = Stream.of(9, 8, 3, 4, 5).collect(Collectors.toList());
+        //41位二进制最小值
+        String minTimeStampStr = "00000000000000000000000000000000000000000";
+        //41位二进制最大值
+        String maxTimeStampStr = "11111111111111111111111111111111111111111";
+        //转10进制
+        long minTimeStamp = new BigInteger(minTimeStampStr, 2).longValue();
+        System.out.println(minTimeStamp);
+        long maxTimeStamp = new BigInteger(maxTimeStampStr, 2).longValue();
+        System.out.println(maxTimeStamp);
+        System.out.println(Long.MAX_VALUE);
+        //一年总共多少毫秒
+        long oneYearMills = 1L * 1000 * 60 * 60 * 24 * 365;
+        System.out.println(oneYearMills);
+        //算出最大可以多少年
+        System.out.println((maxTimeStamp - minTimeStamp) / oneYearMills);
 
-        String ids = "[\n" +
-                "    {\n" +
-                "        \"0\": \"免费\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "        \"1\": \"微信收款\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "        \"2\": \"仅积分支付\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "        \"3\": \"收款至公司账户\"\n" +
-                "    }\n" +
-                "]";
-        JSONArray jsonArray = JSONArray.parseArray(ids);
-        System.out.println(jsonArray);
-        jsonArray.remove(3);
-        System.out.println(jsonArray);
-//        System.out.println(Arrays.toString(array));
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date parse = dateFormat.parse("2046-11-11 23:22:22");
+        System.out.println(parse.getTime());
+
+        Date date = new Date(2199023255551L);
+        System.out.println(dateFormat.format(date));
+
+        System.out.println(IdUtil.getSnowflake(0,0).nextId());
+
 
 
 //        int[] arr = generateRandomArray(100, 50);

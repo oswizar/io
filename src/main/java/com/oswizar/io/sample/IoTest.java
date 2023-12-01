@@ -1,11 +1,9 @@
 package com.oswizar.io.sample;
 
 import org.junit.Test;
-import org.springframework.context.annotation.ComponentScan;
 
 import java.io.*;
 
-@ComponentScan
 public class IoTest {
 
     @Test
