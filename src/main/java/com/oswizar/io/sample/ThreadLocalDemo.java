@@ -1,4 +1,4 @@
-package com.oswizar.io.algorithm.initial;
+package com.oswizar.io.sample;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

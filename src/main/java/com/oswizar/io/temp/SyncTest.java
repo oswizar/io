@@ -1,7 +1,14 @@
 package com.oswizar.io.temp;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Slf4j
 public class SyncTest {
@@ -9,153 +16,108 @@ public class SyncTest {
     private final ThreadLocal<String> threadLocal = new InheritableThreadLocal<>();
 
     public static void main(String[] args) {
-        printBinaryString(2);
 
-//        System.out.println(Integer.MIN_VALUE / -67);
-//        System.out.println("=======================");
-//        int ans = divide(Integer.MIN_VALUE, -67);
-//        System.out.println(ans);
+        List<Integer> l1 = Stream.of(  3, 4, 5,6, 3, 4,5,6).collect(Collectors.toList());
+        List<Integer> l2 = Stream.of(9, 8, 3, 4, 5).collect(Collectors.toList());
 
+        String ids = "[\n" +
+                "    {\n" +
+                "        \"0\": \"免费\"\n" +
+                "    },\n" +
+                "    {\n" +
+                "        \"1\": \"微信收款\"\n" +
+                "    },\n" +
+                "    {\n" +
+                "        \"2\": \"仅积分支付\"\n" +
+                "    },\n" +
+                "    {\n" +
+                "        \"3\": \"收款至公司账户\"\n" +
+                "    }\n" +
+                "]";
+        JSONArray jsonArray = JSONArray.parseArray(ids);
+        System.out.println(jsonArray);
+        jsonArray.remove(3);
+        System.out.println(jsonArray);
+//        System.out.println(Arrays.toString(array));
+
+
+//        int[] arr = generateRandomArray(100, 50);
+//        System.out.println(Arrays.toString(arr));
+//        mergeSortByRecursion(arr, 0, arr.length - 1);
+//        mergeSortByIteration(arr, 0, arr.length - 1);
+//        System.out.println(Arrays.toString(arr));
     }
 
-    private static int add(int a, int b) {
-        int ans = a;
-        while (b != 0) {
-            ans = a ^ b;
-            b = (a & b) << 1;
-            a = ans;
+    private static void mergeSortByRecursion(int[] arr, int left, int right) {
+        // > 边界检查，= 递归终止条件
+        if (left >= right) {
+            return;
+        }
+        int mid = left + ((right - left) >> 1);
+        mergeSortByRecursion(arr, left, mid);
+        mergeSortByRecursion(arr, mid + 1, right);
+        merge(arr, left, mid, right);
+    }
+
+    private static void mergeSortByIteration(int[] arr, int left, int right) {
+        if (left >= right) {
+            return;
+        }
+        // 设置步长
+        int step = 1;
+        while (step <= right) {
+            int low = left;
+            // 依据步长合并每一组左[low, mid]、右[mid + 1, high]区间
+            while (low <= right) {
+                int mid = low + step - 1;
+                // 左区间不足，提前结束
+                if (mid > right) {
+                    break;
+                }
+                int high = Math.min(mid + step, right);
+                merge(arr, low, mid, high);
+                // 更新下一组区间的起始位置
+                low = high + 1;
+            }
+            // 1.步长翻倍前提前检查；2.额外防止溢出
+            if (step > right / 2) {
+                break;
+            }
+            // 步长翻倍
+            step <<= 1;
+        }
+    }
+
+    private static void merge(int[] arr, int left, int mid, int right) {
+        if (mid < left || mid > right) {
+            return;
+        }
+        int[] temp = new int[right - left + 1];
+        int p1 = left;
+        int p2 = mid + 1;
+        int p = 0;
+        while (p1 <= mid && p2 <= right) {
+            temp[p++] = arr[p1] <= arr[p2] ? arr[p1++] : arr[p2++];
+        }
+        while (p1 <= mid) {
+            temp[p++] = arr[p1++];
+        }
+        while (p2 <= right) {
+            temp[p++] = arr[p2++];
+        }
+        for (int i = 0; i < temp.length; i++) {
+            arr[left + i] = temp[i];
+        }
+    }
+
+
+    private static int[] generateRandomArray(int limit, int length) {
+        int[] ans = new int[length];
+        for (int i = 0; i < length; i++) {
+            ans[i] = (int) (Math.random() * (limit + 1)) - (int) (Math.random() * (limit + 1));
         }
         return ans;
     }
-
-    private static int minus(int a, int b) {
-        return add(a, add(~b, 1));
-    }
-
-    private static int multiply(int a, int b) {
-        int ans = 0;
-        while (b != 0) {
-            if ((b & 1) == 1) {
-                ans = add(ans, a);
-            }
-            a = a << 1;
-            b = b >>> 1;
-        }
-        return ans;
-    }
-
-    private static int divide(int a, int b) {
-        if (a == Integer.MIN_VALUE && b == Integer.MIN_VALUE) {
-            return 1;
-        } else if (b == Integer.MIN_VALUE) {
-            return 0;
-        } else if (a == Integer.MIN_VALUE) {
-            if (b == -1) {
-                return Integer.MAX_VALUE;
-            } else {
-                int q = div(add(a, 1), b);
-                return add(q, div(minus(a, multiply(b, q)), b));
-            }
-        } else {
-            return div(a, b);
-        }
-    }
-
-    private static int div(int a, int b) {
-        int x = a > 0 ? a : add(~a, 1);
-        int y = b > 0 ? b : add(~b, 1);
-        int q = 0;
-        for (int i = 30; i >= 0; i = minus(i, 1)) {
-            if ((x >> i) >= y) {
-                q |= 1 << i;
-                x = minus(x, y << i);
-            }
-        }
-        if ((a ^ b) < 0) {
-            q = add(~q, 1);
-        }
-        return q;
-    }
-
-
-    public static void printBinaryString(int num) {
-        for (int i = 31; i >= 0; i--) {
-            int bit = (num & (1 << i)) == 0 ? 0 : 1;
-            System.out.print(bit);
-        }
-    }
-
-
-    @Test
-    public void print() {
-        String s = "111\r222\n333\r\n444\n";
-        threadLocal.set(s);
-        System.out.println(threadLocal.get());
-        new Thread(() -> {
-            System.out.println(threadLocal.get());
-        }).start();
-    }
-
-
-//    public static int add(int a, int b) {
-//        int ans = a;
-//        while (b != 0) {
-//            ans = a ^ b;
-//            b = (a & b) << 1;
-//            a = ans;
-//        }
-//        return ans;
-//    }
-//
-//    public static int minus(int a, int b) {
-//        return add(a, add(~b, 1));
-//    }
-//
-//    public static int multiply(int a, int b) {
-//        int ans = 0;
-//        while (b != 0) {
-//            if ((b & 1) != 0) {
-//                ans = add(ans, a);
-//            }
-//            a <<= 1;
-//            b >>>= 1;
-//        }
-//        return ans;
-//    }
-//
-//    public static int div(int a, int b) {
-//        int x = a > 0 ? a : add(~a, 1);
-//        int y = b > 0 ? b : add(~b, 1);
-//        int q = 0;
-//        for (int i = 31; i > 0; i = minus(i, 1)) {
-//            if ((x >> i) >= y) {
-//                q = q | (1 << i);
-//                x = minus(x, (y << i));
-//            }
-//        }
-//        if ((a ^ b) < 0) {
-//            q = add(~q, 1);
-//        }
-//        return q;
-//    }
-//
-//
-//    public static int divide(int a, int b) {
-//        if (a == Integer.MIN_VALUE && b == Integer.MIN_VALUE) {
-//            return 1;
-//        } else if (b == Integer.MIN_VALUE) {
-//            return 0;
-//        } else if (a == Integer.MIN_VALUE) {
-//            if (b == -1) {
-//                return Integer.MAX_VALUE;
-//            } else {
-//                int q = div(add(a, 1), b);
-//                return add(q, div(minus(a, multiply(q, b)), b));
-//            }
-//        } else {
-//            return div(a, b);
-//        }
-//    }
 
 
 }

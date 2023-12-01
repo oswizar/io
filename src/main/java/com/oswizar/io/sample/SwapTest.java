@@ -1,4 +1,4 @@
-package com.oswizar.io.algorithm.initial;
+package com.oswizar.io.sample;
 
 public class SwapTest {
 

@@ -16,9 +16,8 @@ public class MingRandomNumber {
         }
         List<Integer> list = new ArrayList<>(set);
         Collections.sort(list);
-        Iterator<Integer> it = list.iterator();
-        while (it.hasNext()) {
-            System.out.println(it.next());
+        for (Integer integer : list) {
+            System.out.println(integer);
         }
     }
 }

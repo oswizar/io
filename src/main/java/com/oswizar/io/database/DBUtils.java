@@ -10,7 +10,12 @@ public class DBUtils {
         Statement statement = null;
         ResultSet resultSet = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class<?> forName = Class.forName("com.mysql.jdbc.Driver");
+            System.out.println(forName);
+            Class<?> t = Class.forName("java.lang.Thread");
+            System.out.println(t);
+            long n = 2147483647;
+            System.out.println(n + 1);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

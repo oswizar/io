@@ -11,7 +11,7 @@ public class SolveNQueens {
 
     @Test
     public void show() {
-        System.out.println(solveNQueens(3));
+        System.out.println(solveNQueens(5));
     }
 
     List<List<String>> res = new ArrayList<>();

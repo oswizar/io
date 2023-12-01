@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SumOfTwoNumber {
+public class SumTwoNumber {
 
 
     @Test

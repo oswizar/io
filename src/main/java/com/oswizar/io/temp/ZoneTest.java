@@ -14,8 +14,14 @@ public class ZoneTest {
     private static final Object lock = new Person();
 
     public static void main(String[] args) throws Exception {
+
+
         Deque<Integer> stack = new LinkedList<>();
         Deque<Integer> queue = new LinkedList<>();
+
+        System.out.println(System.currentTimeMillis());
+
+
 
 
         ExecutorService threadPool = Executors.newFixedThreadPool(1);
@@ -63,8 +69,6 @@ public class ZoneTest {
     public void helper() {
     }
 
-
-    // 最长回文子串
 
     public static String longestPalindrome(String s) {
         int len = s.length();
