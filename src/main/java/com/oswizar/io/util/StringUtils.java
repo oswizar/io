@@ -1,12 +1,3 @@
-/**
- *====================================================
- * 文件名称: StringUtils.java
- * 修订记录：
- * No    日期				作者(操作:具体内容)
- * 1.    2015年9月26日			chenxy(创建:创建文件)
- *====================================================
- * 类描述：(说明未实现或其它不应生成javadoc的内容)
- */
 package com.oswizar.io.util;
 
 import java.io.UnsupportedEncodingException;
@@ -16,12 +7,6 @@ import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * @ClassName: StringUtils
- * @Description: TODO(这里用一句话描述这个类的作用)
- * @author
- * @date 2015年9月26日 上午9:53:57
- */
 public class StringUtils {
 
 	/**
@@ -64,7 +49,7 @@ public class StringUtils {
 	}
 
 
-	public static BigDecimal getBigDecimalforString(String param){
+	public static BigDecimal getBigDecimalFromString(String param){
 		BigDecimal val = null;
 		if(isBlank(param)){
 			val = new BigDecimal(0);

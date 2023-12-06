@@ -128,5 +128,67 @@ public class Merge {
         System.arraycopy(B, 0, A, 0, p2 + 1);
     }
 
+    private static void mergeSortByRecursion(int[] arr, int left, int right) {
+        // > 边界检查，= 递归终止条件
+        if (left >= right) {
+            return;
+        }
+        int mid = left + ((right - left) >> 1);
+        mergeSortByRecursion(arr, left, mid);
+        mergeSortByRecursion(arr, mid + 1, right);
+        merge(arr, left, mid, right);
+    }
+
+    private static void mergeSortByIteration(int[] arr, int left, int right) {
+        if (left >= right) {
+            return;
+        }
+        // 设置步长
+        int step = 1;
+        while (step <= right) {
+            int low = left;
+            // 依据步长合并每一组左[low, mid]、右[mid + 1, high]区间
+            while (low <= right) {
+                int mid = low + step - 1;
+                // 左区间不足，提前结束
+                if (mid > right) {
+                    break;
+                }
+                int high = Math.min(mid + step, right);
+                merge(arr, low, mid, high);
+                // 更新下一组区间的起始位置
+                low = high + 1;
+            }
+            // 1.步长翻倍前提前检查；2.额外防止溢出
+            if (step > right / 2) {
+                break;
+            }
+            // 步长翻倍
+            step <<= 1;
+        }
+    }
+
+    private static void merge(int[] arr, int left, int mid, int right) {
+        if (mid < left || mid > right) {
+            return;
+        }
+        int[] temp = new int[right - left + 1];
+        int p1 = left;
+        int p2 = mid + 1;
+        int p = 0;
+        while (p1 <= mid && p2 <= right) {
+            temp[p++] = arr[p1] <= arr[p2] ? arr[p1++] : arr[p2++];
+        }
+        while (p1 <= mid) {
+            temp[p++] = arr[p1++];
+        }
+        while (p2 <= right) {
+            temp[p++] = arr[p2++];
+        }
+        for (int i = 0; i < temp.length; i++) {
+            arr[left + i] = temp[i];
+        }
+    }
+
 
 }

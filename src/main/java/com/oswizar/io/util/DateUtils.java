@@ -25,38 +25,6 @@ public class DateUtils {
 	}
 
 	/**
-	 * 对日期时间对象进行调整
-	 * @param date
-	 * @param CALENDARFIELD
-	 *
-	 *            <pre>
-	 * 年 Calendar.YEAR
-	 * 月 Calendar.MONTH
-	 * 日 Calendar.DATE
-	 * 时 Calendar.HOUR
-	 * 分 Calendar.MINUTE
-	 * 秒 Calendar.SECOND
-	 *            </pre>
-	 *
-	 * @param amount 调整数量，>0表向后调整（明天，明年），<0表向前调整（昨天，去年）
-	 * @return
-	 * @author:chenxy
-	 */
-	public static Date addDateField(Date date, int CALENDARFIELD, int amount) {
-		if (null == date) {
-			return date;
-		}
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(date);
-		calendar.add(CALENDARFIELD, amount);
-		return calendar.getTime();
-	}
-
-	public static Date addHours(Date date, int amount) {
-		return addDateField(date, Calendar.HOUR_OF_DAY, amount);
-	}
-
-	/**
 	 * 转化Date类型
 	 * @param date
 	 * @return
@@ -274,12 +242,4 @@ public class DateUtils {
 		return date == null ? "" : new SimpleDateFormat("yyyy-MM-dd").format(date);
 	}
 
-	/**
-	 * @return 10年后的时间
-	 */
-	public static Date tenYearsLater() {
-		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.YEAR, 10);
-		return cal.getTime();
-	}
 }

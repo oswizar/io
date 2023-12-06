@@ -13,23 +13,13 @@ public class BASE64Utils {
      */
     public static String fileToBase64(String path) {
         String base64 = null;
-        InputStream in = null;
-        try {
-            File file = new File(path);
-            in = new FileInputStream(file);
+        File file = new File(path);
+        try (InputStream in = new FileInputStream(file)) {
             byte[] bytes = new byte[(int) file.length()];
-            in.read(bytes);
+            int read = in.read(bytes);
             base64 = Base64.getEncoder().encodeToString(bytes);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (in != null) {
-                try {
-                    in.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
         return base64;
     }
@@ -45,36 +35,17 @@ public class BASE64Utils {
     public static void base64ToFile(String destPath, String base64, String fileName) {
         File file = null;
         //创建文件目录
-        String filePath = destPath;
-        File dir = new File(filePath);
+        File dir = new File(destPath);
         if (!dir.exists() && !dir.isDirectory()) {
-            dir.mkdirs();
+            boolean mkdirs = dir.mkdirs();
         }
-        BufferedOutputStream bos = null;
-        java.io.FileOutputStream fos = null;
-        try {
+        file = new File(destPath + "/" + fileName);
+        try (FileOutputStream fos = new FileOutputStream(file); BufferedOutputStream bos = new BufferedOutputStream(fos)) {
             byte[] bytes = Base64.getDecoder().decode(base64);
-            file = new File(filePath + "/" + fileName);
-            fos = new java.io.FileOutputStream(file);
-            bos = new BufferedOutputStream(fos);
+
             bos.write(bytes);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (bos != null) {
-                try {
-                    bos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (fos != null) {
-                try {
-                    fos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
     }
 
