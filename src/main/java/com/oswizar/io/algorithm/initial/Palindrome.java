@@ -1,11 +1,8 @@
 package com.oswizar.io.algorithm.initial;
 
-import org.junit.Test;
-
 public class Palindrome {
 
 
-    @Test
     public void show() {
 
         String s = "qwre,tewrtw,erywery,3464546";
@@ -332,7 +329,7 @@ public class Palindrome {
         return s.substring(maxStart, maxEnd + 1);
     }
 
-    @Test
+    
     public void test() {
         String s = "babkkkkbkkkkkd";
         System.out.println(longestPalindrome(s));

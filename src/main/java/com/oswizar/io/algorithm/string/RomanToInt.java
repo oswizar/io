@@ -1,10 +1,10 @@
 package com.oswizar.io.algorithm.string;
 
-import org.junit.Test;
+
 
 public class RomanToInt {
 
-    @Test
+    
     public void print() {
         String s = "MCMXCIV";
         int sum = romanToInt(s);

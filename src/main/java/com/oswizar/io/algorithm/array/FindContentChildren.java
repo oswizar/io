@@ -1,12 +1,12 @@
 package com.oswizar.io.algorithm.array;
 
-import org.junit.Test;
+
 
 import java.util.Arrays;
 
 public class FindContentChildren {
 
-    @Test
+    
     public void show() {
 
 

@@ -1,6 +1,6 @@
 package com.oswizar.io.algorithm.array;
 
-import org.junit.Test;
+
 
 public class MaxSubArray {
 
@@ -88,7 +88,7 @@ public class MaxSubArray {
 //    }
 
 
-    @Test
+    
     public void show() {
 //        int[] nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
         int[] nums = {-1};

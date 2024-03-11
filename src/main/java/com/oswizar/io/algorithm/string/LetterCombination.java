@@ -1,6 +1,6 @@
 package com.oswizar.io.algorithm.string;
 
-import org.junit.Test;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class LetterCombination {
 
-    @Test
+    
     public void show() {
         String str = "239";
         double a = 0.2;

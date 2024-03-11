@@ -1,12 +1,12 @@
 package com.oswizar.io.sample;
 
 import com.oswizar.io.sample.entity.Student;
-import org.junit.Test;
+
 
 public class UserTest {
     private String s;
 
-    @Test
+    
     public void modelTest () {
         Student student = new Student();
         System.out.println(student.getStudentName());

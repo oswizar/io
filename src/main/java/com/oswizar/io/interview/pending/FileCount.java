@@ -1,7 +1,5 @@
 package com.oswizar.io.interview.pending;
 
-import org.junit.Assert;
-
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +19,6 @@ public class FileCount {
         HashMap<String, Integer> hm = new HashMap<>();
         // 获取当前文件夹下的所有文件
         File[] files = src.listFiles();
-        Assert.assertNotNull("指定文件夹访问权限出错", files);
         for (File file : files) {
             // 如果是文件就进行统计
             if (file.isFile()) {

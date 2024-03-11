@@ -2,7 +2,7 @@ package com.oswizar.io.sample.lambda;
 
 import com.oswizar.io.sample.entity.Person;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
+
 
 import java.util.Arrays;
 import java.util.List;
@@ -34,7 +34,7 @@ public class LambdaDemo {
 //        });
 //    }
 
-    @Test
+    
     public void print() {
 
         List<Person> guiltyPersons = Arrays.asList(
@@ -59,7 +59,7 @@ public class LambdaDemo {
     }
 
 
-    @Test
+    
     public void optionalTest() {
 //        Person person = new Person("Chao", "Ma", 25);
         Person person = null;

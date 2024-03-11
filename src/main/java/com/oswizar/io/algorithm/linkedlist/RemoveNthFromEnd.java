@@ -1,6 +1,6 @@
 package com.oswizar.io.algorithm.linkedlist;
 
-import org.junit.Test;
+
 
 public class RemoveNthFromEnd {
 
@@ -94,7 +94,7 @@ public class RemoveNthFromEnd {
     }
 
 
-    @Test
+    
     public void show() {
         int i = 3;
         while (--i > 0) {

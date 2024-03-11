@@ -1,12 +1,12 @@
 package com.oswizar.io.sample;
 
-import org.junit.Test;
+
 
 import java.io.*;
 
 public class IoTest {
 
-    @Test
+    
     public void ioTest() throws Exception {
 
         // TODO Auto-generated method stub
@@ -30,7 +30,7 @@ public class IoTest {
     /**
      * D:\app
      */
-    @Test
+    
     public void fileTest() {
         File file = new File("D:/");//指定文件路径
         File[] f = file.listFiles();//获取指定目录下的所有文件或者文件夹的File数组
@@ -44,7 +44,7 @@ public class IoTest {
     /**
      * app
      */
-    @Test
+    
     public void stringFileTest() {
         File file = new File("D:/");//指定文件目录
         String[] str = file.list();//获取指定目录下的所有文件或者文件夹的名称数组
@@ -57,7 +57,7 @@ public class IoTest {
     /**
      * 输出指定后缀的文件
      */
-    @Test
+    
     public void endWithTest(){
         File file = new File("D:\\Picture");
         String [] list = file.list();
@@ -75,7 +75,7 @@ public class IoTest {
      * 如一个ASCII码就是一个字节
      * @throws IOException
      */
-    @Test
+    
     public void inputOutputTest() throws IOException {
         FileInputStream fis = new FileInputStream("aa.txt");
         FileOutputStream fos = new FileOutputStream("bb.txt",true);
@@ -92,7 +92,7 @@ public class IoTest {
     }
 
 
-    @Test
+    
     public void copyTest(){
         try {
             FileInputStream fis = new FileInputStream("aa.txt");

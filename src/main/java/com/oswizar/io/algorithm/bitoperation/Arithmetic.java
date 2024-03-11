@@ -5,7 +5,7 @@ public class Arithmetic {
     public static void main(String[] args) {
         System.out.println(Integer.MIN_VALUE / -67);
         System.out.println("=======================");
-        int ans = divide(Integer.MIN_VALUE, -67);
+        int ans = divide(10, 3);
         System.out.println(ans);
 
     }

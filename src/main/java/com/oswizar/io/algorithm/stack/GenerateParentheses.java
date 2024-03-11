@@ -1,13 +1,13 @@
 package com.oswizar.io.algorithm.stack;
 
-import org.junit.Test;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GenerateParentheses {
 
-    @Test
+    
     public void show() {
         System.out.println(generateParenthesis(3));
     }

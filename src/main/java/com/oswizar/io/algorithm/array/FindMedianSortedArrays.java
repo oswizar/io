@@ -1,7 +1,5 @@
 package com.oswizar.io.algorithm.array;
 
-import org.junit.Test;
-
 public class FindMedianSortedArrays {
 
 
@@ -124,7 +122,7 @@ public class FindMedianSortedArrays {
 //        }
 //        return cur;
 //    }
-    @Test
+
     public void show() {
         int[] num1 = {1, 3, 4, 9};
         int[] num2 = {1, 2, 3, 4, 5, 6, 7, 8, 9};

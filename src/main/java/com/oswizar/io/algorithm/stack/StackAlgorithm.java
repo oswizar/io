@@ -1,13 +1,13 @@
 package com.oswizar.io.algorithm.stack;
 
-import org.junit.Test;
+
 
 import java.util.*;
 
 public class StackAlgorithm {
 
 
-    @Test
+    
     public void stackTest() {
         Stack<String> stack = new Stack<>();
 
@@ -94,7 +94,7 @@ public class StackAlgorithm {
     }
 
 
-    @Test
+    
     public void source() {
         List arrayList = new ArrayList();
         List linkedList = new LinkedList();

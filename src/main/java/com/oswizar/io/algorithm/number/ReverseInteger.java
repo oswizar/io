@@ -1,10 +1,10 @@
 package com.oswizar.io.algorithm.number;
 
-import org.junit.Test;
+
 
 public class ReverseInteger {
 
-    @Test
+    
     public void test() {
         System.out.println(reverse(-1299999999));
     }

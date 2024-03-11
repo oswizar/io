@@ -1,6 +1,6 @@
 package com.oswizar.io.sample;
 
-import org.junit.Test;
+
 
 /**
  * @date: 2019/5/29 16:46
@@ -161,7 +161,7 @@ public class ShowTest {
     }
 
 
-    @Test
+    
     public void test() {
         int[] arr = {23, 5, 1, 4, 2, 8, 16, 15, 28};
 

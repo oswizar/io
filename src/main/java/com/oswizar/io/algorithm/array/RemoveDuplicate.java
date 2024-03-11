@@ -1,10 +1,10 @@
 package com.oswizar.io.algorithm.array;
 
-import org.junit.Test;
+
 
 public class RemoveDuplicate {
 
-    @Test
+    
     public void test() {
         int[] nums = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
         int i = removeDuplicates(nums);

@@ -1,10 +1,10 @@
 package com.oswizar.io.algorithm.number;
 
-import org.junit.Test;
+
 
 public class MaxArea {
 
-    @Test
+    
     public void show() {
         int[] array = {1, 8, 6, 2, 5, 4, 8, 3, 7,9};
         System.out.println(maxArea(array));

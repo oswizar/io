@@ -1,7 +1,7 @@
 package com.oswizar.io.sample;
 
 import com.alibaba.fastjson.JSONObject;
-import org.junit.Test;
+
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -61,7 +61,7 @@ public class DateTest {
         System.out.println(sum);
     }
 
-    @Test
+    
     public void testLocalDateTime() {
 
         LocalDateTime localDateTime = LocalDateTime.now();
@@ -74,7 +74,7 @@ public class DateTest {
 
     }
 
-    @Test
+    
     public void md5() throws NoSuchAlgorithmException, UnsupportedEncodingException {
 //        Security.addProvider(new BouncyCastleProvider());
         String str = "50.00";

@@ -2,7 +2,7 @@ package com.oswizar.io.sample;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.junit.Test;
+
 
 import java.util.*;
 
@@ -71,7 +71,7 @@ public class StringTest {
 
 
 
-    @Test
+    
     public void hashCodeTest() {
         String str1 = "aa";
         String str2 = "bb";
@@ -86,7 +86,7 @@ public class StringTest {
 
     }
 
-    @Test
+    
     public void stringMapTest() {
         Map<String, Object> map = new HashMap<>();
         map.put("key1", "小明");
@@ -112,7 +112,7 @@ public class StringTest {
     }
 
 
-    @Test
+    
     public void subStringTest() {
 
         String massage1 = "A111a我司评估价格为XXX，请修改";
@@ -126,7 +126,7 @@ public class StringTest {
 
 
 
-    @Test
+    
     public void nullAndBankTest() {
         String pptyAreaName=null;
         System.out.println(pptyAreaName);
@@ -147,7 +147,7 @@ public class StringTest {
     }
 
 
-    @Test
+    
     public void  indexOfTest() {
         String s = "5年期收益曲线(2-)";
 
@@ -169,7 +169,7 @@ public class StringTest {
 
 
 
-    @Test
+    
     public void intOrInteger() {
         String s = "123555";
         String substring = s.substring(3, 5);

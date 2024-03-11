@@ -7,7 +7,7 @@ public class SingleNumber2 {
 
     public static void main(String[] args) {
 
-        int[] nums = {4, 1, 2, 1, 2, 1, 2};
+        int[] nums = {4, 1, 2, 1, 2, 1, 2,3,3,3,4,4, Integer.MAX_VALUE};
         int i = singleNumber1(nums);
         System.out.println(i);
     }

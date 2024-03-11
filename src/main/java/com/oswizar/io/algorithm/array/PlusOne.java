@@ -1,13 +1,13 @@
 package com.oswizar.io.algorithm.array;
 
-import org.junit.Test;
+
 
 import java.util.Arrays;
 
 public class PlusOne {
 
 
-    @Test
+    
     public void show() {
         /**
          * [9,8,7,6,5,4,3,2,1,0]

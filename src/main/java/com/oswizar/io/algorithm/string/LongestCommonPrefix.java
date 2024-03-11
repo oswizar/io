@@ -1,10 +1,10 @@
 package com.oswizar.io.algorithm.string;
 
-import org.junit.Test;
+
 
 public class LongestCommonPrefix {
 
-    @Test
+    
     public void test() {
 //        String[] strs = {"dog","racecar","car"};
         String[] strs = {"aaa", "aa"};

@@ -3,7 +3,9 @@ package com.oswizar.io.algorithm.bitoperation;
 public class BinaryNumber {
 
     public static void main(String[] args) {
-        printBinaryString(Integer.MIN_VALUE);
+        printBinaryString(-10);
+        System.out.println();
+        System.out.println(Integer.toBinaryString(-10));
     }
 
     public static void printBinaryString(int num) {

@@ -1,6 +1,6 @@
 package com.oswizar.io.algorithm.backtrack;
 
-import org.junit.Test;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class SolveNQueens {
 
-    @Test
+    
     public void show() {
         System.out.println(solveNQueens(5));
     }

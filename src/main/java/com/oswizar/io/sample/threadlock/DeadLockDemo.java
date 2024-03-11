@@ -35,8 +35,8 @@ public class DeadLockDemo extends Thread {
         d1.start();
         d2.start();
         try {
-            d1.join();
             d2.join();
+            d1.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

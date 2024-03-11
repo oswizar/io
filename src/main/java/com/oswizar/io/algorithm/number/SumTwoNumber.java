@@ -1,6 +1,6 @@
 package com.oswizar.io.algorithm.number;
 
-import org.junit.Test;
+
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -9,7 +9,7 @@ import java.util.Map;
 public class SumTwoNumber {
 
 
-    @Test
+    
     public void show() {
         int[] arrays = {2, 5, 7, 8, 11};
         int target = 12;
@@ -35,7 +35,7 @@ public class SumTwoNumber {
         return new int[]{-1,-1};
     }
 
-//    @Test
+//    
 //    public void show() {
 //        int[] arr = solution();
 //        System.out.println(Arrays.toString(arr));

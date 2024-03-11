@@ -3,7 +3,7 @@ package com.oswizar.io.sample;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
+
 
 
 import java.text.DateFormat;
@@ -21,7 +21,7 @@ public class MapTest {
         this.doir();
     }
 
-    @Test
+    
     public void mapTest() {
         Map<String, Object> map = new HashMap<>(19);
 
@@ -63,7 +63,7 @@ public class MapTest {
     }
 
 
-    @Test
+    
     public void mapNullTest() {
         Map<String, String> map = new HashMap<>();
         System.out.println(map.isEmpty());

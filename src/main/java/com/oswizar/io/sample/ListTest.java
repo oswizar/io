@@ -1,7 +1,7 @@
 package com.oswizar.io.sample;
 
 import com.oswizar.io.sample.entity.Person;
-import org.junit.Test;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,7 +21,7 @@ public class ListTest {
         ListTest.basic = basic;
     }
 
-    @Test
+    
     public void listTest(){
         List<Person> list = new ArrayList<>();
 //        list = null;
@@ -70,7 +70,7 @@ public class ListTest {
 
 
 
-    @Test
+    
     public void arrayListTest() {
 
         List<List<Integer>> res=new ArrayList<>();

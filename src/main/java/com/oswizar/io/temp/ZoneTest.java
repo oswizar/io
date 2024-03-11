@@ -1,10 +1,13 @@
 package com.oswizar.io.temp;
 
+import com.oswizar.io.algorithm.tree.TreeNode;
 import com.oswizar.io.sample.entity.Person;
 import lombok.extern.slf4j.Slf4j;
+import lombok.val;
 
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.concurrent.*;
 
 
@@ -66,7 +69,28 @@ public class ZoneTest {
     }
 
 
-    public void helper() {
+    public void helper(TreeNode root, List<Integer> data) {
+        if (root == null) {
+            return;
+        }
+        Deque<TreeNode> stack = new LinkedList<>();
+        TreeNode prev = null;
+        while (root != null || !stack.isEmpty()) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
+            }
+            root = stack.peek();
+            if (root.right == null || root.right == prev) {
+                data.add(root.val);
+                prev = root;
+                stack.pop();
+                root = null;
+            } else {
+                root = root.right;
+            }
+        }
+
     }
 
 

@@ -1,6 +1,6 @@
 package com.oswizar.io.algorithm.slidingwindow;
 
-import org.junit.Test;
+
 
 import java.text.MessageFormat;
 import java.util.HashMap;
@@ -51,7 +51,7 @@ public class LongestSubstring {
     }
 
 
-    @Test
+    
     public void messageFormat() {
         String s = "{0}斯蒂芬斯蒂芬124{1}";
         String a = "aaa";

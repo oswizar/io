@@ -1,6 +1,6 @@
 package com.oswizar.io.sample;
 
-import org.junit.Test;
+
 
 /**
  * @date: 2019/5/20 11:32
@@ -9,7 +9,7 @@ import org.junit.Test;
  */
 public class IntegerTest {
 
-    @Test
+    
     public void printInt() {
         System.out.println("int的最大值为: " + Integer.MAX_VALUE);
         System.out.println("2的30次方等于: " + (int)Math.pow(2,30));
@@ -23,7 +23,7 @@ public class IntegerTest {
 
 
 
-    @Test
+    
     public void tableSizeFor() {
         int n = 16 - 1;
         System.out.println(n |= n >>> 1);

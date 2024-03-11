@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * 输入: "(0123)"
  * <p>
- * 输出: ["(0, 123)", "(0, 12.3)", "(0, 1.23)", "(0.1, 23)", "(0.1, 2.3)", "(0.12, 3)"]
+ * 输出: ["(0, 123)", "(0, 1.23)", "(0, 12.3)", "(0.1, 23)", "(0.1, 2.3)", "(0.12, 3)"]
  */
 class Solution {
     String s;
@@ -45,8 +45,8 @@ class Solution {
 
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        List<String> list = solution.ambiguousCoordinates("(10101100123)");
+        Solution solution1 = new Solution();
+        List<String> list = solution1.ambiguousCoordinates("(0123)");
         System.out.println(list);
     }
 }

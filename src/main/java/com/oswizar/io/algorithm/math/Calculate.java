@@ -1,10 +1,10 @@
 package com.oswizar.io.algorithm.math;
 
-import org.junit.Test;
+
 
 public class Calculate {
 
-    @Test
+    
     public void print() {
         System.out.println(Math.pow(2, 3));
 //        double[] doubles = calculateLoanAmount1(50000, 0.045, 12);

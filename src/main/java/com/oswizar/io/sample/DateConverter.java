@@ -1,7 +1,7 @@
 package com.oswizar.io.sample;
 
 import com.oswizar.io.util.DateUtils;
-import org.junit.Test;
+
 
 import java.util.Date;
 
@@ -38,7 +38,7 @@ public class DateConverter {
 
 
 
-    @Test
+    
     public void subStrTest() {
         String time  = "201801";
         String formatTime = time.substring(0,4);

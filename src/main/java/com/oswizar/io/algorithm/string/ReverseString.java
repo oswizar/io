@@ -1,13 +1,13 @@
 package com.oswizar.io.algorithm.string;
 
-import org.junit.Test;
+
 
 import java.util.Arrays;
 
 public class ReverseString {
 
 
-    @Test
+    
     public void show() {
         char[] chars = {'h', 'e', 'l', 'l', 'o'};
         reverseString(chars);

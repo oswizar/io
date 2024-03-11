@@ -1,6 +1,6 @@
 package com.oswizar.io.algorithm.string;
 
-import org.junit.Test;
+
 
 public class CountAndSay {
 
@@ -38,7 +38,7 @@ public class CountAndSay {
 //        }
 //        return cur.toString();
 //    }
-    @Test
+    
     public void show() {
         System.out.println(countAndSay(30));
 

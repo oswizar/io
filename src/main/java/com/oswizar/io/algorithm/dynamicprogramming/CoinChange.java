@@ -1,6 +1,6 @@
 package com.oswizar.io.algorithm.dynamicprogramming;
 
-import org.junit.Test;
+
 
 public class CoinChange {
 
@@ -84,7 +84,7 @@ public class CoinChange {
         return dp[amount] = (min == Integer.MAX_VALUE) ? -1 : min;
     }
 
-    @Test
+    
     public void show() {
 //        int a = 6;
         System.out.println(6/6);

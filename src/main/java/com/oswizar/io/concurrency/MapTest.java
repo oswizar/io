@@ -1,13 +1,13 @@
 package com.oswizar.io.concurrency;
 
-import org.junit.Test;
+
 
 import java.util.*;
 
 public class MapTest {
 
 
-    @Test
+    
     public void concurrentMapTest() {
         Map<String, Object> synchronizedMap = Collections.synchronizedMap(new HashMap<>());
 

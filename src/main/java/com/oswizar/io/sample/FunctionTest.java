@@ -1,7 +1,7 @@
 
 package com.oswizar.io.sample;
 
-import org.junit.Test;
+
 
 public class FunctionTest {
 
@@ -43,7 +43,7 @@ public class FunctionTest {
         return -1;
     }
 
-    @Test
+    
     public void print () {
         System.out.println(getFactorialFor(3));
         getFactorial(3);

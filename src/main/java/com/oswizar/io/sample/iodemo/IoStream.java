@@ -2,7 +2,7 @@
 package com.oswizar.io.sample.iodemo;
 
 
-import org.junit.Test;
+
 
 import java.io.*;
 
@@ -11,7 +11,7 @@ public class IoStream {
     /**
      * 创建一个文件
      */
-    @Test
+    
     public void crateFile() {
 
         String fileName = "d:" + File.separator + "app" + File.separator + "haha.txt";
@@ -28,7 +28,7 @@ public class IoStream {
     /**
      * 删除文件
      */
-    @Test
+    
     public void deleteFile() {
         File f = new File("d:/app/hello.txt");
         if (f.exists()) {
@@ -42,7 +42,7 @@ public class IoStream {
     /**
      * 创建一个文件夹
      */
-    @Test
+    
     public void createDir() {
         File f = new File("d:/app/hello1");
         if (f.exists()) {
@@ -56,7 +56,7 @@ public class IoStream {
     /**
      * 列出指定目录的全部文件(包括隐藏文件)
      */
-    @Test
+    
     public void listFile() {
         File f = new File("D:/");
         File[] list = f.listFiles();
@@ -69,7 +69,7 @@ public class IoStream {
     /**
      * 搜索指定目录下的所有文件
      */
-    @Test
+    
     public void completeFile() {
         File f = new File("d:/tmp/");
         print(f);
@@ -94,7 +94,7 @@ public class IoStream {
     /**
      * 使用RandomAccessFile写入文件
      */
-    @Test
+    
     public void randomFile() throws Exception {
         File file = new File("d:/app/aaa.txt");
         RandomAccessFile raf = new RandomAccessFile(file, "rws");
@@ -111,7 +111,7 @@ public class IoStream {
     /**
      * 向文件中写入字符串
      */
-    @Test
+    
     public void writeStrings() throws Exception {
         File file = new File("d:/app/aaab.txt");
         OutputStream out = new FileOutputStream(file);
@@ -126,7 +126,7 @@ public class IoStream {
     /**
      * 向文件中写入字符串(一个字节一个字节写入)
      */
-    @Test
+    
     public void writeStringsByte() throws Exception {
         File file = new File("d:/app/aaab.txt");
         OutputStream out = new FileOutputStream(file);
@@ -142,7 +142,7 @@ public class IoStream {
     /**
      * 向文件中追加新内容
      */
-    @Test
+    
     public void appendString() throws Exception {
         File file = new File("d:/app/aaab.txt");
         OutputStream out = new FileOutputStream(file, true);
@@ -160,7 +160,7 @@ public class IoStream {
     /**
      * 读取文件内容
      */
-    @Test
+    
     public void readFile() throws Exception {
         File file = new File("d:/app/aaab.txt");
         InputStream in = new FileInputStream(file);
@@ -175,7 +175,7 @@ public class IoStream {
     /**
      * 读取文件内容(高效)
      */
-    @Test
+    
     public void readFileByLength() throws Exception {
         File file = new File("d:/app/aaab.txt");
         InputStream in = new FileInputStream(file);
@@ -189,7 +189,7 @@ public class IoStream {
     /**
      * 读取文件内容(先计算长度)
      */
-    @Test
+    
     public void readFilePreLength() throws Exception {
         File file = new File("d:/app/aaab.txt");
         InputStream in = new FileInputStream(file);
@@ -203,7 +203,7 @@ public class IoStream {
     /**
      * 读取文件内容(判断是否到文件末尾)
      */
-    @Test
+    
     public void readFileDynamic() throws Exception {
         File file = new File("d:/app/aaab.txt");
         InputStream in = new FileInputStream(file);
@@ -225,7 +225,7 @@ public class IoStream {
     /**
      * 字符流写入文件
      */
-    @Test
+    
     public void writeFile() throws Exception {
         File file = new File("d:/app/aaab.txt");
         Writer writer = new FileWriter(file);
@@ -237,7 +237,7 @@ public class IoStream {
     /**
      * 字符流读取文件
      */
-    @Test
+    
     public void readStringFile() throws Exception {
         File file = new File("d:/app/aaab.txt");
         Reader reader = new FileReader(file);
@@ -251,7 +251,7 @@ public class IoStream {
     /**
      * 文件的复制
      */
-    @Test
+    
     public void copyFile () throws Exception {
         File file1 = new File("d:/app/aaab.txt");
         File file2 = new File("d:/app/haha.txt");

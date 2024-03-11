@@ -1,6 +1,6 @@
 package com.oswizar.io.algorithm.number;
 
-import org.junit.Test;
+
 
 public class MaxProfit {
 
@@ -136,7 +136,7 @@ public class MaxProfit {
         return result;
     }
 
-    @Test
+    
     public void show() {
         int[] parameter = {7, 1, 5, 3, 6, 4};
         System.out.println(maxProfit(parameter));

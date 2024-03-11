@@ -1,10 +1,10 @@
 package com.oswizar.io.algorithm.recursion;
 
-import org.junit.Test;
+
 
 public class ClimbStairs {
 
-    @Test
+    
     public void show() {
         System.out.println(climbStairs(45));
 

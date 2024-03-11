@@ -7,7 +7,7 @@ import com.alibaba.fastjson.TypeReference;
 import com.oswizar.io.sample.entity.Course;
 import com.oswizar.io.sample.entity.Student;
 import com.oswizar.io.sample.entity.Teacher;
-import org.junit.Test;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,7 +33,7 @@ public class FastjsonTest {
     /**
      * json字符串-简单对象型与JSONObject之间的转换
      */
-    @Test
+    
     public  void testJSONStrToJSONObject(){
 
         JSONObject jsonObject = JSON.parseObject(JSON_OBJ_STR);
@@ -49,7 +49,7 @@ public class FastjsonTest {
     /**
      * json字符串与JSONArray之间的转换
      */
-    @Test
+    
     public  void testJSONStrToJSONArray(){
 
         JSONArray jsonArray = JSON.parseArray(JSON_ARRAY_STR);
@@ -75,7 +75,7 @@ public class FastjsonTest {
     /**
      * 复杂json格式字符串与JSONObject之间的转换
      */
-    @Test
+    
     public  void testComplexJSONStrToJSONObject(){
 
         JSONObject jsonObject = JSON.parseObject(COMPLEX_JSON_STR);
@@ -103,7 +103,7 @@ public class FastjsonTest {
     /**
      * json字符串-简单对象与JavaBean_obj之间的转换
      */
-    @Test
+    
     public  void testJSONStrToJavaBeanObj(){
         //并不能强制转换
 //        Object student1 = JSON.parseObject(JSON_OBJ_STR);
@@ -121,7 +121,7 @@ public class FastjsonTest {
     /**
      * json字符串-数组类型与JavaBean_List之间的转换
      */
-    @Test
+    
     public  void testJSONStrToJavaBeanList(){
 
         ArrayList<Student> students = JSON.parseObject(JSON_ARRAY_STR, new TypeReference<ArrayList<Student>>() {});
@@ -137,7 +137,7 @@ public class FastjsonTest {
     /**
      * 复杂json格式字符串与JavaBean_obj之间的转换
      */
-    @Test
+    
     public  void testComplexJSONStrToJavaBean(){
 
         Teacher teacher = JSON.parseObject(COMPLEX_JSON_STR, new TypeReference<Teacher>() {});

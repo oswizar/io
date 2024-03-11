@@ -1,12 +1,12 @@
 package com.oswizar.io.algorithm.array;
 
-import org.junit.Test;
+
 
 import java.util.Arrays;
 
 public class MoveZero {
 
-    @Test
+    
     public void show() {
         int[] nums = {0, 1, 0, 3, 12};
         // 1,3,12,0,0

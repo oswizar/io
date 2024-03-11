@@ -1,11 +1,11 @@
 package com.oswizar.io.algorithm.recursion;
 
-import org.junit.Test;
+
 
 public class Fibonacci {
 
 
-    @Test
+    
     public void show() {
 //        int s = fib(54);
         int s = fibForDP(57);

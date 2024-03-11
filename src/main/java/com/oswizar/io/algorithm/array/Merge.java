@@ -1,12 +1,9 @@
 package com.oswizar.io.algorithm.array;
 
-import org.junit.Test;
-
 import java.util.Arrays;
 
 public class Merge {
 
-    @Test
     public void show() {
 
 
@@ -65,7 +62,7 @@ public class Merge {
 //         */
 //        System.arraycopy(nums2, 0, nums1, 0, p2 + 1);
 //    }
-    @Test
+    
     public void test() {
 
 

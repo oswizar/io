@@ -1,9 +1,8 @@
 package com.oswizar.io.temp;
 
+import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Slf4j
@@ -11,20 +10,27 @@ public class SyncTest {
 
     private final ThreadLocal<String> threadLocal = new InheritableThreadLocal<>();
 
-    public static void main(String[] args) throws Exception {
-
-        try {
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            Date parse = dateFormat.parse("ffff2046-11-11 23:22:22ffff");
-            int a = 1/0;
-            System.out.println(a);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+    public static void main(String[] args){
+        List<String> list = new ArrayList<>();
+        boolean a = list.add("a");
+        System.out.println(a);
 
     }
 
+}
+
+
+class MyThread extends Thread {
+    @Override
+    public void run(){
+        super.run();
+        for(int i=0; i<500000; i++){
+            if(interrupted()) {
+                System.out.println("线程已经终止， for循环不再执行");
+                return;
+            }
+            System.out.println("i="+(i+1));
+        }
+    }
 }
 

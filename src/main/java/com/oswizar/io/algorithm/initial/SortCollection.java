@@ -1,7 +1,5 @@
 package com.oswizar.io.algorithm.initial;
 
-import org.junit.Test;
-
 /**
  * @date: 2019/5/28 10:32
  * @author: oswizar
@@ -249,7 +247,7 @@ public class SortCollection {
     }
 
 
-    @Test
+    
     public void test() {
 //        int[] arr = {6, 10, 2, 7, 9, 3, 4, 5, 1, 8};
 //        int[] arr = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};

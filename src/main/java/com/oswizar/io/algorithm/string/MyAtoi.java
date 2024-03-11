@@ -1,6 +1,6 @@
 package com.oswizar.io.algorithm.string;
 
-import org.junit.Test;
+
 
 import java.util.Arrays;
 
@@ -97,7 +97,7 @@ public class MyAtoi {
     }
 
 
-    @Test
+    
     public void show() {
 //        String s = "words and 987";
 //        String s = "-41939997kl999998-- ---234 with words";
