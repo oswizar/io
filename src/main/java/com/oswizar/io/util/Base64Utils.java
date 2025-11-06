@@ -3,7 +3,7 @@ package com.oswizar.io.util;
 import java.io.*;
 import java.util.Base64;
 
-public class BASE64Utils {
+public class Base64Utils {
 
     /**
      * 将文件编码成base64字符串
@@ -37,12 +37,11 @@ public class BASE64Utils {
         //创建文件目录
         File dir = new File(destPath);
         if (!dir.exists() && !dir.isDirectory()) {
-            boolean mkdirs = dir.mkdirs();
+            dir.mkdirs();
         }
         file = new File(destPath + "/" + fileName);
         try (FileOutputStream fos = new FileOutputStream(file); BufferedOutputStream bos = new BufferedOutputStream(fos)) {
             byte[] bytes = Base64.getDecoder().decode(base64);
-
             bos.write(bytes);
         } catch (Exception e) {
             e.printStackTrace();

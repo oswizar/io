@@ -5,68 +5,54 @@ import com.oswizar.io.sample.entity.Person;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
+import javax.annotation.Nonnull;
+import java.util.*;
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 
 @Slf4j
 public class ZoneTest {
 
-    private static final Object lock = new Person();
+    private static final Object lock = new Object();
+    private static final AtomicInteger threadNumber = new AtomicInteger(1);
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+        System.out.println(Thread.currentThread().getName());
 
+        int[] nums = {1,1,2};
+        List<List<Integer>> result = new ArrayList<>();
+        Deque<Integer> path = new LinkedList<>();
+        boolean[] visited = new boolean[nums.length];
+        Arrays.sort(nums);
+        permute(nums, result, path, visited);
 
-        Deque<Integer> stack = new LinkedList<>();
-        Deque<Integer> queue = new LinkedList<>();
+        System.out.println(result);
 
-        System.out.println(System.currentTimeMillis());
+    }
 
-
-
-
-        ExecutorService threadPool = Executors.newFixedThreadPool(1);
-
-        Runnable runnable = () -> {
-            System.out.println("runnable");
-            int i = 1 / 0;
-        };
-
-        Callable<String> callable = () -> {
-            System.out.println("callable");
-            int i = 1 / 0;
-            return "ok";
-        };
-
-//        FutureTask<String> task = new FutureTask<>(callable);
-//        new Thread(task).start();
-//        task.get();
-//        System.out.println(task.get());
-
-//        threadPool.execute(runnable);
-
-
-        Future<?> future1 = threadPool.submit(runnable);
-//        Object res1 = future1.get();
-
-        try {
-            Future<String> future2 = threadPool.submit(callable);
-            String res2 = future2.get();
-        } finally {
-            threadPool.shutdown();
+    public static void permute(int[] nums, List<List<Integer>> result, Deque<Integer> path, boolean[] visited) {
+        if (path.size() == nums.length) {
+            result.add(new ArrayList<>(path));
+            return;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (!visited[i]) {
+                if (i > 0 && nums[i] == nums[i - 1] && !visited[i - 1]) {
+                    continue;
+                }
+                path.addLast(nums[i]);
+                visited[i] = true;
+                permute(nums, result, path, visited);
+                visited[i] = false;
+                path.removeLast();
+            }
         }
 
     }
 
-    static class MyRejectedHandler implements RejectedExecutionHandler {
 
-        @Override
-        public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
-            System.out.println("任务拒绝");
-        }
-    }
 
 
     public void helper(TreeNode root, List<Integer> data) {

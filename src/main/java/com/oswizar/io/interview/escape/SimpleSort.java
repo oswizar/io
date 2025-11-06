@@ -6,7 +6,8 @@ public class SimpleSort {
 
     public static void main(String[] args) {
 //        int[] arr = new int[]{9, 5, 2, 7, 12, 4, 3, 1, 11, 9};
-        int[] arr = new int[]{1, 3, 4, 5, 6, 7, 8, 9, 10, 2};
+//        int[] arr = new int[]{1, 3, 4, 5, 6, 7, 8, 9, 10, 2};
+        int[] arr = new int[]{110, 100, 0};
         System.out.println(Arrays.toString(arr));
 //        bubbleSort(arr);
 //        selectSort(arr);
