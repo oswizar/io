@@ -30,20 +30,6 @@ public class DateUtils {
 	 * @return
 	 * @author:chenxy
 	 */
-	public static Integer parseDateInt(String date) {
-		if (org.apache.commons.lang3.StringUtils.isBlank(date)) {
-			return null;
-		}
-		date = date.replaceAll("[^0-9]", "");
-		return Integer.parseInt(date);
-	}
-
-	/**
-	 * 转化Date类型
-	 * @param date
-	 * @return
-	 * @author:chenxy
-	 */
 	public static Integer parseDateInt(Date date) {
 		if (date == null) {
 			return null;
