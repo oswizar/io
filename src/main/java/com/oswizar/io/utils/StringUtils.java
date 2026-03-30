@@ -1,4 +1,4 @@
-package com.oswizar.io.util;
+package com.oswizar.io.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;

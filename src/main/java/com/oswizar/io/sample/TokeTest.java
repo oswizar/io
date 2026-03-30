@@ -1,6 +1,6 @@
 package com.oswizar.io.sample;
 
-import com.oswizar.io.util.StringUtils;
+import com.oswizar.io.utils.StringUtils;
 
 import java.util.Arrays;
 import java.util.Collections;

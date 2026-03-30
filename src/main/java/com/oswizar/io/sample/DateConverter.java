@@ -1,6 +1,6 @@
 package com.oswizar.io.sample;
 
-import com.oswizar.io.util.DateUtils;
+import com.oswizar.io.utils.DateUtils;
 
 
 import java.util.Date;

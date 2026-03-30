@@ -7,7 +7,7 @@
  *====================================================
  * 类描述：(说明未实现或其它不应生成javadoc的内容)
  */
-package com.oswizar.io.util;
+package com.oswizar.io.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

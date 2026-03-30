@@ -9,7 +9,10 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
@@ -60,11 +63,11 @@
             <version>1.11</version>
         </dependency>
 
-        <!--lombok依赖引入-->
+        <!--lombok 依赖引入-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.4</version>
+            <version>1.18.30</version>
         </dependency>
 
         <dependency>
@@ -138,9 +141,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.11.0</version>
                 <configuration>
-                    <release>11</release>
+                    <release>17</release>
                 </configuration>
             </plugin>
         </plugins>

@@ -1,6 +1,6 @@
 package com.oswizar.io.designpattern.chain;
 
-import com.oswizar.io.util.StringUtils;
+import com.oswizar.io.utils.StringUtils;
 
 public class ValidateHandler extends Handler{
     @Override

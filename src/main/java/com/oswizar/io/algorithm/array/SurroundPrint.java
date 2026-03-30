@@ -1,6 +1,6 @@
 package com.oswizar.io.algorithm.array;
 
-import com.oswizar.io.util.RandomUtils;
+import com.oswizar.io.utils.RandomUtils;
 
 import java.util.*;
 

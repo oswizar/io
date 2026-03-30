@@ -1,4 +1,4 @@
-package com.oswizar.io.util;
+package com.oswizar.io.utils;
 
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import org.jasypt.encryption.pbe.config.EnvironmentStringPBEConfig;
